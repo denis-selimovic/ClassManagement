@@ -70,13 +70,13 @@ router.post('/:id/upload', auth, checkRoles([ROLE_TUTOR]), upload.single('file')
 
 router.delete('/:id/upload', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
+        const lesson = await Lesson.getLessonById(req.params.id);
         if (lesson.owner !== req.user._id.toString()) {
             return res.json(403).json({ message: 'Unable to access item' });
         }
         if (!bodyValidator(Object.keys(req.body), ['file'])) {
             return res.status(400).json({ message: 'Invalid request body' });
         }
-        const lesson = await Lesson.getLessonById(req.params.id);
         const uploadFile = req.body.file;
         const upload = await Upload.findById(uploadFile);
         lesson.uploads = lesson.uploads.filter(u => u._id.toString() !== uploadFile);
