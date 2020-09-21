@@ -29,12 +29,12 @@ lessonSchema.statics.getLessonById = async id => {
     return lesson;
 };
 
-lessonSchema.statics.getLessonByIdAndUpdate = async (id, body) => {
+lessonSchema.statics.getLessonByIdAndUpdate = async (id, body, userId) => {
     if (!partialBodyValidator(Object.keys(body), ['name', 'description'])) {
         throw new Error();
     }
     const lesson = await Lesson.findById(id);
-    if (!lesson) {
+    if (!lesson || lesson.owner !== userId) {
         throw new Error();
     }
     Object.keys(body).forEach(key => lesson[key] = body[key]);

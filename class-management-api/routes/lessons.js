@@ -10,10 +10,7 @@ const { bodyValidator } = require("../common/http");
 
 router.patch('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
-        const lesson = await Lesson.getLessonByIdAndUpdate(req.params.id, req.body);
-        if (lesson.owner !== req.user._id.toString()) {
-            return res.json(403).json({ message: 'Unable to access item' });
-        }
+        const lesson = await Lesson.getLessonByIdAndUpdate(req.params.id, req.body, req.user._id.toString());
         res.status(200).json(lesson);
     } catch (e) {
         res.status(400).json({ message: 'Unable to load item' });
