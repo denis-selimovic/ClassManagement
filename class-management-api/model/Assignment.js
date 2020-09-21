@@ -10,6 +10,10 @@ const assignmentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Upload'
     }],
+    setup: {
+        type: Schema.Types.ObjectId,
+        ref: 'Upload'
+    },
     dueDate: {
         type: Date,
         required: true
