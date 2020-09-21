@@ -114,7 +114,7 @@ router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
 router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('file'), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'assignments');
-        if (course.owner !== req.user._id) {
+        if (course.owner !== req.user._id.toString()) {
             return res.status(401).json({ message: 'Unable to access item' })
         }
         if (!bodyValidator(Object.keys(req.body), ['name', 'dueDate', 'extensions'])) {

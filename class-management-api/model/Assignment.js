@@ -29,10 +29,14 @@ const assignmentSchema = new Schema({
     }
 });
 
+assignmentSchema.methods.setExtensions = function (extensions) {
+
+};
+
 assignmentSchema.methods.course = async function () {
     const Course = this.model('Course');
     return await Course.findOne({ assignments: { $elemMatch: { $eq: { _id: this._id } } } }).exec();
-}
+};
 
 const Assignment = mongoose.model('Assignment', assignmentSchema);
 
