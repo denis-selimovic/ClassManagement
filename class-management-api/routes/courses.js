@@ -4,7 +4,7 @@ const Course = require('../model/Course');
 const Lesson = require('../model/Lesson');
 const Assignment = require('../model/Assignment')
 const { bodyValidator } = require('../common/http');
-const auth = require('../common/auth');
+const { auth } = require('../common/auth');
 
 router.post('/create', auth, async (req, res) => {
     if (!bodyValidator(Object.keys(req.body), ['name', 'description'])) {

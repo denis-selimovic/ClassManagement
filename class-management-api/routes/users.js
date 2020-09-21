@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
 const { bodyValidator } = require('../common/http');
-const auth = require('../common/auth');
+const { auth } = require('../common/auth');
 
 router.post('/auth/register', async (req, res) => {
     if (!bodyValidator(Object.keys(req.body), ['username', 'password', 'email', 'name', 'surname'])) {

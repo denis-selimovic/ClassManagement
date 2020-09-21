@@ -4,7 +4,7 @@ const multer = require('multer');
 const upload = multer();
 const Lesson = require('../model/Lesson');
 const Upload = require('../model/Upload');
-const auth = require('../common/auth');
+const { auth } = require('../common/auth');
 const { bodyValidator } = require("../common/http");
 
 router.patch('/:id', auth, async (req, res) => {
