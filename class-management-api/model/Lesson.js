@@ -18,10 +18,6 @@ const lessonSchema = new Schema({
     owner: {
         type: String,
         required: true
-    },
-    published: {
-        type: Boolean,
-        default: false
     }
 });
 
