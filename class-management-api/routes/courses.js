@@ -120,8 +120,9 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('fi
         if (!bodyValidator(Object.keys(req.body), ['name', 'dueDate', 'extensions'])) {
             return res.status(400).json({ message: 'Invalid request body' });
         }
-        const assignment = new Assignment(req.body);
+        const assignment = new Assignment({ name: req.body.name, dueDate: req.body.dueDate });
         assignment.owner = req.user._id.toString();
+        assignment.setExtensions(req.body.extensions);
         if (req.file) {
             const file = req.file;
             const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString() });
