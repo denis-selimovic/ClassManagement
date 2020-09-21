@@ -16,6 +16,7 @@ router.post('/create', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
         return res.status(400).json({ message: 'Name already in use' });
     }
     const course = new Course(req.body);
+    course.owner = req.user._id.toString();
     await course.save();
     res.status(201).json(course);
 });
@@ -90,6 +91,9 @@ router.get('/:id/lessons', auth, async (req, res) => {
 router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'lessons');
+        if (course.owner !== req.user._id) {
+            return res.status(401).json({ message: 'Unable to access item' })
+        }
         if (!bodyValidator(Object.keys(req.body), ['name', 'description'])) {
             return res.status(400).json({ message: 'Invalid request body' });
         }
@@ -106,6 +110,9 @@ router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
 router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'assignments');
+        if (course.owner !== req.user._id) {
+            return res.status(401).json({ message: 'Unable to access item' })
+        }
         if (!bodyValidator(Object.keys(req.body), ['name', 'dueDate', 'extensions'])) {
             return res.status(400).json({ message: 'Invalid request body' });
         }
