@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer();
 const Course = require('../model/Course');
 const Lesson = require('../model/Lesson');
 const Assignment = require('../model/Assignment')
+const Upload = require('../model/Upload');
 const { ROLE_TUTOR, ROLE_USER } = require('../common/roles');
 const { bodyValidator } = require('../common/http');
 const { auth, checkRoles } = require('../common/auth');
@@ -108,7 +111,7 @@ router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     }
 });
 
-router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
+router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('file'), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'assignments');
         if (course.owner !== req.user._id) {
@@ -119,6 +122,12 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), async (req, res) 
         }
         const assignment = new Assignment(req.body);
         assignment.owner = req.user._id.toString();
+        if (req.file) {
+            const file = req.file;
+            const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString() });
+            await upload.save();
+            assignment.setup = upload;
+        }
         await assignment.save();
         course.assignments.push(assignment);
         await course.save();
