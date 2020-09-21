@@ -26,4 +26,22 @@ router.delete('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     }
 });
 
+router.get('/:id', auth, async (req, res) => {
+    try {
+        const assignment = await Assignment.getAssignmentById(req.params.id);
+        res.status(200).json(assignment);
+    } catch (e) {
+        res.status(401).json({ message: 'Unable to fetch item'});
+    }
+});
+
+router.get('/', auth, async (req, res) => {
+    try {
+        const assignments = await Assignment.find({});
+        res.status(200).json(assignments);
+    } catch (e) {
+        res.status(400).json({ message: 'Unable to fetch items' })
+    }
+});
+
 module.exports = router;
