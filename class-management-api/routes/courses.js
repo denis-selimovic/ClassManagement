@@ -91,7 +91,7 @@ router.get('/:id/lessons', auth, async (req, res) => {
 router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'lessons');
-        if (course.owner !== req.user._id) {
+        if (course.owner !== req.user._id.toString()) {
             return res.status(401).json({ message: 'Unable to access item' })
         }
         if (!bodyValidator(Object.keys(req.body), ['name', 'description'])) {
