@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const Upload = require('./Upload');
 
 const assignmentSchema = new Schema({
     name: {
@@ -39,6 +40,11 @@ assignmentSchema.methods.course = async function () {
     const Course = this.model('Course');
     return await Course.findOne({ assignments: { $elemMatch: { $eq: { _id: this._id } } } }).exec();
 };
+
+assignmentSchema.pre('remove', async function (next) {
+    await Upload.deleteMany({ owner: this._id.toString() });
+    next();
+});
 
 const Assignment = mongoose.model('Assignment', assignmentSchema);
 
