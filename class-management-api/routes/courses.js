@@ -98,6 +98,7 @@ router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
             return res.status(400).json({ message: 'Invalid request body' });
         }
         const lesson = new Lesson(req.body);
+        lesson.owner = req.user._id.toString();
         await lesson.save();
         course.lessons.push(lesson);
         await course.save();
