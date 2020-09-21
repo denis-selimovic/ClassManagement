@@ -4,7 +4,7 @@ const multer = require('multer');
 const upload = multer();
 const Lesson = require('../model/Lesson');
 const Upload = require('../model/Upload');
-const { ROLE_USER, ROLE_TUTOR } = require('../common/roles');
+const { ROLE_TUTOR } = require('../common/roles');
 const { auth, checkRoles } = require('../common/auth');
 const { bodyValidator } = require("../common/http");
 
