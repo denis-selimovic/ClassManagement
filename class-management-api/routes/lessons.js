@@ -4,21 +4,28 @@ const multer = require('multer');
 const upload = multer();
 const Lesson = require('../model/Lesson');
 const Upload = require('../model/Upload');
-const { auth } = require('../common/auth');
+const { ROLE_USER, ROLE_TUTOR } = require('../common/roles');
+const { auth, checkRoles } = require('../common/auth');
 const { bodyValidator } = require("../common/http");
 
-router.patch('/:id', auth, async (req, res) => {
+router.patch('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const lesson = await Lesson.getLessonByIdAndUpdate(req.params.id, req.body);
+        if (lesson.owner !== req.user._id.toString()) {
+            return res.json(403).json({ message: 'Unable to access item' });
+        }
         res.status(200).json(lesson);
     } catch (e) {
         res.status(400).json({ message: 'Unable to load item' });
     }
 });
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const lesson = await Lesson.getLessonById(req.params.id);
+        if (lesson.owner !== req.user._id.toString()) {
+            return res.json(403).json({ message: 'Unable to access item' });
+        }
         await lesson.remove();
         res.status(200).json({ message: 'Item successfully deleted' });
     } catch (e) {
@@ -44,9 +51,12 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
+router.post('/:id/upload', auth, checkRoles([ROLE_TUTOR]), upload.single('file'), async (req, res) => {
     try {
         const lesson = await Lesson.getLessonById(req.params.id);
+        if (lesson.owner !== req.user._id.toString()) {
+            return res.json(403).json({ message: 'Unable to access item' });
+        }
         const file = req.file;
         const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: lesson._id.toString() });
         await upload.save();
@@ -58,8 +68,11 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
     }
 });
 
-router.delete('/:id/upload', auth, async (req, res) => {
+router.delete('/:id/upload', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
+        if (lesson.owner !== req.user._id.toString()) {
+            return res.json(403).json({ message: 'Unable to access item' });
+        }
         if (!bodyValidator(Object.keys(req.body), ['file'])) {
             return res.status(400).json({ message: 'Invalid request body' });
         }
