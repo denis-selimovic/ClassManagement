@@ -30,7 +30,9 @@ const assignmentSchema = new Schema({
 });
 
 assignmentSchema.methods.setExtensions = function (extensions) {
-    this.extensions = extensions.split(',').map(e => { e.trim() });
+    this.extensions = extensions.split(',').map(e => {
+        return { extension: e.trim() };
+    });
 };
 
 assignmentSchema.methods.course = async function () {
