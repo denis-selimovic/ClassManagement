@@ -3,10 +3,11 @@ const router = express.Router();
 const Course = require('../model/Course');
 const Lesson = require('../model/Lesson');
 const Assignment = require('../model/Assignment')
+const { ROLE_TUTOR, ROLE_USER } = require('../common/roles');
 const { bodyValidator } = require('../common/http');
-const { auth } = require('../common/auth');
+const { auth, checkRoles } = require('../common/auth');
 
-router.post('/create', auth, async (req, res) => {
+router.post('/create', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     if (!bodyValidator(Object.keys(req.body), ['name', 'description'])) {
         return res.status(400).json({ message: 'Invalid request body' });
     }
@@ -19,7 +20,7 @@ router.post('/create', auth, async (req, res) => {
     res.status(201).json(course);
 });
 
-router.post('/enroll/:id', auth, async (req, res) => {
+router.post('/enroll/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'students');
         const user = req.user;
@@ -34,7 +35,7 @@ router.post('/enroll/:id', auth, async (req, res) => {
     }
 });
 
-router.post('/leave/:id', auth, async (req, res) => {
+router.post('/leave/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'students');
         const user = req.user;
@@ -49,7 +50,7 @@ router.post('/leave/:id', auth, async (req, res) => {
     }
 });
 
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     try {
         const course = await Course.getCourseById(req.params.id);
         res.status(200).json(course);
@@ -86,7 +87,7 @@ router.get('/:id/lessons', auth, async (req, res) => {
     }
 });
 
-router.post('/:id/lesson', auth, async (req, res) => {
+router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'lessons');
         if (!bodyValidator(Object.keys(req.body), ['name', 'description'])) {
@@ -102,7 +103,7 @@ router.post('/:id/lesson', auth, async (req, res) => {
     }
 });
 
-router.post('/:id/assignment', auth, async (req, res) => {
+router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'assignments');
         if (!bodyValidator(Object.keys(req.body), ['name', 'dueDate', 'extensions'])) {
