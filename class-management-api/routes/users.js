@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
-const { ROLE_USER } = require("../common/roles");
+const { ROLE_USER, ROLE_TUTOR } = require("../common/roles");
 const { bodyValidator } = require('../common/http');
 const { auth, checkRoles } = require('../common/auth');
 
@@ -27,6 +27,13 @@ router.post('/auth/login', async (req, res) => {
     } catch (e) {
         res.status(400).json({ message: e.message });
     }
+});
+
+router.post('/tutor', auth, checkRoles([ROLE_USER]), async (req, res) => {
+    const user = req.user;
+    user.roles.push({ role: ROLE_TUTOR })
+    await user.save();
+    res.status(200).json(user);
 });
 
 router.get('/me', auth, checkRoles([ROLE_USER]), async (req, res) => {
