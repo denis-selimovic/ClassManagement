@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../model/User');
 const { ROLE_USER } = require("../common/roles");
 const { bodyValidator } = require('../common/http');
-const { auth } = require('../common/auth');
+const { auth, checkRoles } = require('../common/auth');
 
 router.post('/auth/register', async (req, res) => {
     if (!bodyValidator(Object.keys(req.body), ['username', 'password', 'email', 'name', 'surname'])) {
@@ -29,7 +29,7 @@ router.post('/auth/login', async (req, res) => {
     }
 });
 
-router.get('/me', auth, async (req, res) => {
+router.get('/me', auth, checkRoles([ROLE_USER]), async (req, res) => {
     res.status(200).json(req.user);
 });
 

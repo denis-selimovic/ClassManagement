@@ -21,7 +21,7 @@ const checkRoles = roles => {
         if (req.user.roles.some(r => roles.includes(r.role))) {
             return next();
         }
-        res.status(403).json('Not authorized')
+        res.status(403).json({ message: 'Not authorized' })
     }
 }
 
