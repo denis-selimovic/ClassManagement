@@ -36,6 +36,12 @@ const userSchema = new Schema({
             required: true
         }
     }],
+    roles: [{
+        role: {
+            type: String,
+            required: true
+        }
+    }]
 });
 
 userSchema.methods.generateAuthToken = async function () {
