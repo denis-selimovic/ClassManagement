@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
+const { ROLE_USER } = require("../common/roles");
 const { bodyValidator } = require('../common/http');
 const { auth } = require('../common/auth');
 
@@ -13,7 +14,7 @@ router.post('/auth/register', async (req, res) => {
         return res.status(400).json({ message: 'Username or email already in use' });
     }
     const user = new User(req.body);
-    user.roles.push({ role: 'ROLE_USER' });
+    user.roles.push({ role: ROLE_USER });
     await user.save();
     res.status(201).json(user);
 });
