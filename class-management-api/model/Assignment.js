@@ -18,7 +18,11 @@ const assignmentSchema = new Schema({
         extension: {
             type: String
         }
-    }]
+    }],
+    owner: {
+        type: String,
+        required: true
+    }
 });
 
 assignmentSchema.methods.course = async function () {
