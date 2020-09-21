@@ -118,6 +118,7 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), async (req, res) 
             return res.status(400).json({ message: 'Invalid request body' });
         }
         const assignment = new Assignment(req.body);
+        assignment.owner = req.user._id.toString();
         await assignment.save();
         course.assignments.push(assignment);
         await course.save();
