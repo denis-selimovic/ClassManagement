@@ -22,7 +22,11 @@ const courseSchema = new Schema({
     assignments: [{
         type: Schema.Types.ObjectId,
         ref: 'Assignment'
-    }]
+    }],
+    owner: {
+        type: String,
+        required: true
+    }
 });
 
 courseSchema.statics.getCourseById = async id => {
