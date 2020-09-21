@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const Upload = require('./Upload');
+const { partialBodyValidator } = require('../common/http')
 
 const assignmentSchema = new Schema({
     name: {
@@ -39,6 +40,19 @@ assignmentSchema.methods.setExtensions = function (extensions) {
 assignmentSchema.methods.course = async function () {
     const Course = this.model('Course');
     return await Course.findOne({ assignments: { $elemMatch: { $eq: { _id: this._id } } } }).exec();
+};
+
+assignmentSchema.statics.getAssignmentByIdAndUpdate = async (id, body) => {
+    if (!partialBodyValidator(Object.keys(body), ['name', 'dueDate'])) {
+        throw new Error();
+    }
+    const assignment = await Assignment.findById(id);
+    if (!assignment) {
+        throw new Error();
+    }
+    Object.keys(body).forEach(key => assignment[key] = body[key]);
+    await assignment.save();
+    return assignment;
 };
 
 assignmentSchema.statics.getAssignmentById = async id => {

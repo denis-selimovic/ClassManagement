@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const Assignment = require('../model/Assignment');
+const { ROLE_TUTOR } = require('../common/roles');
+const { auth, checkRoles } = require('../common/auth');
 
-router.delete('/:id', async (req, res) => {
+router.patch('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
+
+});
+
+router.delete('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
         if (assignment.owner !== req.user._id.toString()) {
