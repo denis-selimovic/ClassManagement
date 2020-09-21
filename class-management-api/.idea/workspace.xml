@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b26d4bb1-4e9e-4bcb-9ff8-ce50b6b9bf83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/common/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/lessons.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/lessons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-    </list>
+    <list default="true" id="b26d4bb1-4e9e-4bcb-9ff8-ce50b6b9bf83" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +74,7 @@
       <workItem from="1600622295565" duration="2586000" />
       <workItem from="1600625849551" duration="15721000" />
       <workItem from="1600641818577" duration="11000" />
-      <workItem from="1600681585848" duration="709000" />
+      <workItem from="1600681585848" duration="1117000" />
     </task>
     <servers />
   </component>
