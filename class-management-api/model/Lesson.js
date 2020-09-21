@@ -14,7 +14,11 @@ const lessonSchema = new Schema({
     uploads: [{
         type: Schema.Types.ObjectId,
         ref: 'Upload'
-    }]
+    }],
+    owner: {
+        type: String,
+        required: true
+    }
 });
 
 lessonSchema.statics.getLessonById = async id => {
