@@ -41,6 +41,14 @@ assignmentSchema.methods.course = async function () {
     return await Course.findOne({ assignments: { $elemMatch: { $eq: { _id: this._id } } } }).exec();
 };
 
+assignmentSchema.statics.getAssignmentById = async id => {
+    const assignment = await Assignment.findById(id).populate('uploads');
+    if (!assignment) {
+        throw new Error();
+    }
+    return assignment;
+};
+
 assignmentSchema.pre('remove', async function (next) {
     await Upload.deleteMany({ owner: this._id.toString() });
     next();
