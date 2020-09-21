@@ -5,7 +5,12 @@ const { ROLE_TUTOR } = require('../common/roles');
 const { auth, checkRoles } = require('../common/auth');
 
 router.patch('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
-
+    try {
+        const assignment = await Assignment.getAssignmentByIdAndUpdate(req.params.id, req.body, req.user._id.toString());
+        res.status(200).json(assignment);
+    } catch (e) {
+        res.status(401).json({ message: 'Unable to access item' });
+    }
 });
 
 router.delete('/:id', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {

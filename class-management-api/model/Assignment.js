@@ -42,12 +42,12 @@ assignmentSchema.methods.course = async function () {
     return await Course.findOne({ assignments: { $elemMatch: { $eq: { _id: this._id } } } }).exec();
 };
 
-assignmentSchema.statics.getAssignmentByIdAndUpdate = async (id, body) => {
+assignmentSchema.statics.getAssignmentByIdAndUpdate = async (id, body, userId) => {
     if (!partialBodyValidator(Object.keys(body), ['name', 'dueDate'])) {
         throw new Error();
     }
     const assignment = await Assignment.findById(id);
-    if (!assignment) {
+    if (!assignment || assignment.owner !== userId) {
         throw new Error();
     }
     Object.keys(body).forEach(key => assignment[key] = body[key]);
