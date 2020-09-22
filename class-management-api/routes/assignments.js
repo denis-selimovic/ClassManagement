@@ -25,9 +25,7 @@ router.post('/:id/setup', auth, checkRoles([ROLE_TUTOR]), upload.single('file'),
         if (assignment.setup._id) {
             await assignment.setup.remove();
         }
-        const file = req.file;
-        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString(), uploadedBy: req.user._id });
-        await upload.save();
+        const upload = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);
         assignment.setup = upload;
         await assignment.save();
         res.status(201).json(assignment);
@@ -75,14 +73,11 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
         if (!userCourses.map(c => c._id.toString()).includes(assignmentCourse._id.toString())) {
             return res.status(400).json({ message: 'Unable to upload item / not enrolled to course' });
         }
-        const file = req.file;
-        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString(), uploadedBy: req.user._id });
-        await upload.save();
+        const upload = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);
         assignment.uploads.push(upload);
         await assignment.save();
         res.status(201).json(assignment);
     } catch (e) {
-        console.log(e.message);
         res.status(400).json({ message: 'Unable to upload item' })
     }
 });

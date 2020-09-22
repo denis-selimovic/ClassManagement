@@ -55,8 +55,7 @@ router.post('/:id/upload', auth, checkRoles([ROLE_TUTOR]), upload.single('file')
             return res.json(403).json({ message: 'Unable to access item' });
         }
         const file = req.file;
-        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: lesson._id.toString(), uploadedBy: req.user._id });
-        await upload.save();
+        const upload = await Upload.createUpload(req.file, lesson._id.toString(), req.user._id);
         lesson.uploads.push(upload);
         await lesson.save();
         res.status(201).json(upload);
