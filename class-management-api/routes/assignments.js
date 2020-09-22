@@ -25,8 +25,7 @@ router.post('/:id/setup', auth, checkRoles([ROLE_TUTOR]), upload.single('file'),
         if (assignment.setup._id) {
             await assignment.setup.remove();
         }
-        const upload = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);
-        assignment.setup = upload;
+        assignment.setup = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);
         await assignment.save();
         res.status(201).json(assignment);
     } catch (e) {
