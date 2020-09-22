@@ -17,6 +17,11 @@ const uploadSchema = new Schema({
     owner: {
         type: String,
         required: true
+    },
+    uploadedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 });
 
