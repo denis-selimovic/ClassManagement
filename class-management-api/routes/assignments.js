@@ -67,4 +67,23 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
+router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
+    try {
+        const assignment = await Assignment.getAssignmentById(req.params.id);
+        const userCourses = await req.user.courses();
+        const assignmentCourse = await assignment.course();
+        if (!userCourses.map(c => c._id).includes(assignmentCourse._id)) {
+            return res.status(400).json({ message: 'Unable to upload item' });
+        }
+        const file = req.file;
+        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: lesson._id.toString(), uploadedBy: req.user._id });
+        await upload.save();
+        assignment.uploads.push(upload);
+        await assignment.save();
+        res.status(201).json(assignment);
+    } catch (e) {
+        res.status(400).json({ message: 'Unable to upload item' })
+    }
+});
+
 module.exports = router;
