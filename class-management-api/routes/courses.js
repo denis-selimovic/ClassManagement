@@ -134,6 +134,7 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('fi
         await course.save();
         res.status(201).json(course);
     } catch (e) {
+        console.log(e.message);
         res.status(400).json({ message: 'Unable to load item' });
     }
 });
