@@ -26,7 +26,7 @@ router.post('/:id/setup', auth, checkRoles([ROLE_TUTOR]), upload.single('file'),
             await assignment.setup.remove();
         }
         const file = req.file;
-        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString() });
+        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString(), uploadedBy: req.user._id });
         await upload.save();
         assignment.setup = upload;
         await assignment.save();

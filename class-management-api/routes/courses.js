@@ -125,7 +125,7 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('fi
         assignment.setExtensions(req.body.extensions);
         if (req.file) {
             const file = req.file;
-            const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString() });
+            const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString(), uploadedBy: req.user._id });
             await upload.save();
             assignment.setup = upload;
         }
