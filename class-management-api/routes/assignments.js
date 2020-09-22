@@ -76,7 +76,7 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
             return res.status(400).json({ message: 'Unable to upload item' });
         }
         const file = req.file;
-        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: lesson._id.toString(), uploadedBy: req.user._id });
+        const upload = new Upload({ mimetype: file.mimetype, data: file.buffer, name: file.originalname, owner: assignment._id.toString(), uploadedBy: req.user._id });
         await upload.save();
         assignment.uploads.push(upload);
         await assignment.save();
