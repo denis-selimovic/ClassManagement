@@ -34,8 +34,11 @@
       {{registerForm.controls.email.errors?.required ? 'Email is required' : 'Wrong email format'}}
     </div>
   </div>
-  <input class="ui primary submit button" value="Register" type="submit"/>
+  <input class="ui primary submit button" value="Register" type="submit" [disabled]="registerForm.invalid"/>
   <div class="ui error message input-width" *ngIf="failedRegistration">
     Username or email already in use
+  </div>
+  <div class="ui positive message input-width" *ngIf="registered">
+    Successfully registered to CManage. You can login now.
   </div>
 </form>
