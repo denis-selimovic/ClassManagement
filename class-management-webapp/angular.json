@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "class-management-webapp"
+    }
+  },
+  "defaultProject": "class-management-webapp",
+  "cli": {
+    "analytics": "58379a2c-9b4a-4110-8233-4a4486966c2e"
+  }
 }
