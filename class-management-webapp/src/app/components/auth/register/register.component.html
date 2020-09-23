@@ -1,1 +1,41 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" class="ui form error" (ngSubmit)="register()">
+  <div class="field input-width">
+    <label>Name</label>
+    <input type="text" formControlName="name" name="name" placeholder="Name"/>
+    <div class="ui error message" *ngIf="registerForm.get('name').touched && registerForm.get('name').invalid">
+      Name is required
+    </div>
+  </div>
+  <div class="field input-width">
+    <label>Surname</label>
+    <input type="text" formControlName="surname" name="surname" placeholder="Surname"/>
+    <div class="ui error message" *ngIf="registerForm.get('surname').touched && registerForm.get('surname').invalid">
+      Surname is required
+    </div>
+  </div>
+  <div class="field input-width">
+    <label>Username</label>
+    <input type="text" formControlName="username" name="username" placeholder="Username"/>
+    <div class="ui error message" *ngIf="registerForm.get('username').touched && registerForm.get('username').invalid">
+      {{registerForm.controls.username.errors?.required ? 'Username is required' : 'Username must have minimum 5 characters'}}
+    </div>
+  </div>
+  <div class="field input-width">
+    <label>Password</label>
+    <input type="password" formControlName="password" name="password" placeholder="Password"/>
+    <div class="ui error message" *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid">
+      {{registerForm.controls.password.errors?.required ? 'Password is required' : 'Password must have minimum 8 characters'}}
+    </div>
+  </div>
+  <div class="field input-width">
+    <label>Email</label>
+    <input type="email" formControlName="email" name="email" placeholder="Email"/>
+    <div class="ui error message" *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid">
+      {{registerForm.controls.email.errors?.required ? 'Email is required' : 'Wrong email format'}}
+    </div>
+  </div>
+  <input class="ui primary submit button" value="Register" type="submit"/>
+  <div class="ui error message input-width" *ngIf="failedRegistration">
+    Username or email already in use
+  </div>
+</form>
