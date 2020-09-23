@@ -14,4 +14,7 @@
     </div>
   </div>
   <input class="ui primary submit button" value="Submit" type="submit" [disabled]="loginForm.invalid"/>
+  <div class="ui error message input-width" *ngIf="failedLogin">
+    Incorrect username or password
+  </div>
 </form>

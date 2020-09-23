@@ -11,6 +11,7 @@ import { UserService } from '../../../services/user/user.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  failedLogin = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {
     this.loginForm = formBuilder.group({
@@ -24,9 +25,10 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).subscribe(body => {
-      console.log(body);
+      this.failedLogin = false;
+      this.userService.setUser(body.user, body.token);
     }, error => {
-      this.router.navigate(['register']);
+      this.failedLogin = true;
     });
   }
 }

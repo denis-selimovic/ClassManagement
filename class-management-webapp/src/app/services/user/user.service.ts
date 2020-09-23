@@ -19,7 +19,7 @@ export interface User {
 })
 export class UserService {
 
-  private user: User;
+  private user: User = null;
 
   constructor(private http: HttpClient) { }
 
