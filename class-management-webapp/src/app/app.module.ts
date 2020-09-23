@@ -5,16 +5,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { NavbarComponent } from './auth/navbar/navbar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent }
+  { path: '', component: NavbarComponent, children: [
+    { path: '', component: LoginComponent }, { path: 'register', component: RegisterComponent }
+    ] }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
