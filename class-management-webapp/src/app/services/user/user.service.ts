@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+export interface Role {
+  role: string;
+}
+
 export interface User {
   username: string;
   name: string;
   surname: string;
   email: string;
+  token: string;
+  roles: Role[];
 }
 
 @Injectable({
@@ -13,9 +19,23 @@ export interface User {
 })
 export class UserService {
 
+  private user: User;
+
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): any {
     return this.http.post('http://localhost:3000/users/auth/login', { username, password });
+  }
+
+  setUser(userData, token): void {
+    const { username, name, surname, email } = userData;
+    const roles: Role[] = userData.roles.map(r => {
+      return { role: r.role };
+    });
+    this.user = { username, name, surname, email, token, roles };
+  }
+
+  getUser(): User {
+    return this.user;
   }
 }
