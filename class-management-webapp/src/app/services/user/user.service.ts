@@ -27,6 +27,10 @@ export class UserService {
     return this.http.post('http://localhost:3000/users/auth/login', { username, password });
   }
 
+  register(username: string, password: string, name: string, surname: string, email: string): any {
+    return this.http.post('http://localhost:3000/users/auth/register', { username, password, name, surname, email });
+  }
+
   setUser(userData, token): void {
     const { username, name, surname, email } = userData;
     const roles: Role[] = userData.roles.map(r => {
