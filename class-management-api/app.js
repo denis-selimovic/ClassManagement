@@ -1,5 +1,6 @@
 const express = require('express');
 const logger = require('morgan');
+const cors = require('cors');
 const app = express();
 
 const userRoutes = require('./routes/users');
@@ -8,6 +9,7 @@ const lessonRoutes = require('./routes/lessons');
 const assignmentRoutes = require('./routes/assignments');
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/users', userRoutes);
