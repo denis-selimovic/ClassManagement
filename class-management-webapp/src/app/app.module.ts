@@ -9,8 +9,9 @@ import { NavbarComponent } from './auth/navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: NavbarComponent, children: [
-    { path: '', component: LoginComponent }, { path: 'register', component: RegisterComponent }
-    ] }
+      { path: '', component: LoginComponent }, { path: 'register', component: RegisterComponent }
+    ]
+  }
 ];
 
 @NgModule({
