@@ -1,1 +1,17 @@
-<p>login works well!</p>
+<form [formGroup]="loginForm" class="ui form error" (ngSubmit)="login()">
+  <div class="field input-width">
+    <label>Username</label>
+    <input type="text" formControlName="username" name="username" placeholder="Username"/>
+    <div class="ui error message" *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid">
+      Username is required
+    </div>
+  </div>
+  <div class="field input-width">
+    <label>Password</label>
+    <input type="password" formControlName="password" name="password" placeholder="Password"/>
+    <div class="ui error message" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+      Password is required
+    </div>
+  </div>
+  <input class="ui submit button" value="Submit" type="submit"/>
+</form>
