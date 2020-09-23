@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginForm.get('username').valueChanges.subscribe(value => this.failedLogin = false);
+    this.loginForm.get('password').valueChanges.subscribe(value => this.failedLogin = false);
   }
 
   login(): void {
