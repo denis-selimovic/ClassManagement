@@ -8,6 +8,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { NavbarComponent } from './components/auth/navbar/navbar.component';
 
+import { UserService } from './services/user/user.service';
+
 const appRoutes: Routes = [
   { path: '', component: NavbarComponent, children: [
       { path: '', component: LoginComponent }, { path: 'register', component: RegisterComponent }
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
