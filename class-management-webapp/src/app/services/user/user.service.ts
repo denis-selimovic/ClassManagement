@@ -39,6 +39,10 @@ export class UserService {
     this.user = { username, name, surname, email, token, roles };
   }
 
+  clearUser(): void {
+    this.user = null;
+  }
+
   getUser(): User {
     return this.user;
   }
