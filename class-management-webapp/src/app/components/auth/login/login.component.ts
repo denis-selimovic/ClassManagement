@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   failedLogin = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService, private route: ActivatedRoute) {
     this.loginForm = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -29,6 +29,14 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).subscribe(body => {
       this.failedLogin = false;
       this.userService.setUser(body.user, body.token);
+      this.route.queryParams.subscribe(queryParams => {
+        if (queryParams.return) {
+          this.router.navigate([queryParams.return]);
+        }
+        else {
+          this.router.navigate(['dashboard']);
+        }
+      });
     }, error => {
       this.failedLogin = true;
     });
