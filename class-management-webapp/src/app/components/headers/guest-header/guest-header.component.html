@@ -1,6 +1,8 @@
 <div class="guest-header">
   <div class="header-name guest-header-item">Class Management App</div>
-  <div class="header-name guest-header-item"><app-search-bar></app-search-bar></div>
+  <div class="header-name guest-header-item">
+    <ng-content select="[slot=search]"></ng-content>
+  </div>
 </div>
 <div class="guest-header right-floated-header">
   <a class="header-name guest-header-item nav-link" routerLink="login">Login</a>

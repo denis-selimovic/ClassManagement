@@ -1,3 +1,7 @@
 <app-navbar>
-  <ng-container slot="header"><app-guest-header></app-guest-header></ng-container>
+  <ng-container slot="header">
+    <app-guest-header>
+      <app-search-bar slot="search"></app-search-bar>
+    </app-guest-header>
+  </ng-container>
 </app-navbar>
