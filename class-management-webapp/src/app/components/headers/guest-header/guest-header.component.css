@@ -28,3 +28,7 @@
 .nav-link:hover {
   color: lightgray;
 }
+
+.main-page-link {
+  cursor: pointer;
+}
