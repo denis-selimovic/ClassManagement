@@ -1,0 +1,30 @@
+.guest-header {
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.right-floated-header {
+  flex-flow: row-reverse;
+  justify-content: right;
+}
+
+.guest-header-item {
+  margin: 30px;
+}
+
+.header-name {
+  font-size: 20px;
+  font-family: Monaco, "Lucida Console", monospace;
+  color: aliceblue;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: lightgray;
+}

@@ -18,6 +18,8 @@ import { SearchBarComponent } from './components/input/search-bar/search-bar.com
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
+  { path: 'register', component: LoginComponent },
+  { path: 'login', component: RegisterComponent },
   { path: 'dashboard', component: UserDashboardComponent }
 ];
 

@@ -1,0 +1,23 @@
+.search-bar {
+  height: 30px;
+  background-color: white;
+  border: 0 white;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-family: Monaco, "Lucida Console", monospace;
+}
+
+.search-form > input[type="text"] {
+  width: 250px;
+  padding-left: 10px;
+}
+
+.search-form > input[type="submit"] {
+  font-size: 12px;
+  font-family: Monaco, "Lucida Console", monospace;
+}
+
+.search-form {
+  margin: 10px;
+}
+
