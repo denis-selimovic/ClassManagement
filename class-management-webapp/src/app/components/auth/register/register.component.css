@@ -1,3 +1,51 @@
-.input-width {
+.register-form {
   width: 500px;
+  min-width: 500px;
+}
+
+.register-input-field {
+  min-width: 500px;
+  width: 500px;
+  margin: 15px auto;
+  font-size: 16px;
+  border-radius: 2px;
+  font-family: Monaco, "Lucida Console", monospace;
+}
+
+.register-input {
+  width: 60%;
+  height: 40px;
+  margin-bottom: 7px;
+  font-size: 16px;
+  font-family: Monaco, "Lucida Console", monospace;
+}
+
+.error-input {
+  width: 60%;
+  min-height: 40px;
+  height: fit-content;
+  font-size: 16px;
+  border: 1px deeppink solid;
+  background-color: indianred;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.success-input {
+  border: 1px darkgreen solid;
+  background-color: lightgreen;
+}
+
+.register-submit {
+  margin-bottom: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: dodgerblue;
+  font-family: Monaco, "Lucida Console", monospace;
+  color: white;
+  width: 120px;
+  height: 40px;
+  border: 0 dodgerblue;
+  border-radius: 2px;
 }
