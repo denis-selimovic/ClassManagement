@@ -12,12 +12,12 @@ import { NavbarComponent } from './components/auth/navbar/navbar.component';
 import { UserService } from './services/user/user.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { UserDashboardComponent } from './components/dashboard/user-dashboard/user-dashboard.component';
+import { GuestDashboardComponent } from './components/dashboard/guest-dashboard/guest-dashboard.component';
+import { GuestHeaderComponent } from './components/headers/guest-header/guest-header.component';
+import { SearchBarComponent } from './components/input/search-bar/search-bar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: NavbarComponent, children: [
-      { path: '', component: LoginComponent }, { path: 'register', component: RegisterComponent }
-    ]
-  },
+  { path: '', component: GuestDashboardComponent },
   { path: 'dashboard', component: UserDashboardComponent }
 ];
 
@@ -27,7 +27,10 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    GuestDashboardComponent,
+    GuestHeaderComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,14 @@
-<div class="ui huge secondary menu">
-  <div class="item">
-    <i class="big terminal icon"></i>
+<div class="grid">
+  <div class="grid-header">
+    <ng-content select="[slot=header]"></ng-content>
   </div>
-  <div class="item">
-    <div class="ui medium header">CManage</div>
+  <div class="grid-main">
+    <ng-content select="[slot=main]"></ng-content>
   </div>
-  <div class="right menu">
-    <div class="ui item">
-      <button class="ui primary medium button" routerLink="register">Sign up</button>
-    </div>
-    <div class="ui item">
-      <button class="ui medium button" routerLink="">Login</button>
-    </div>
+  <div class="grid-left-sidebar">
+    <ng-content select="[slot=lsidebar]"></ng-content>
   </div>
-</div>
-<div class="ui three column grid">
-  <div class="row">
-    <div class="column"></div>
-    <div class="column"></div>
-    <div class="column">
-      <router-outlet></router-outlet>
-    </div>
+  <div class="grid-footer">
+    <ng-content select="[slot=footer]"></ng-content>
   </div>
-</div>
-<div class="ui blue inverted center aligned segment navbar-footer">
-  <p>Class management app</p>
-  <p>&#169; Denis Selimović</p>
 </div>
