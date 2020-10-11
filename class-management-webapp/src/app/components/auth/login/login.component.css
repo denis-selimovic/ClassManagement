@@ -12,6 +12,19 @@
   width: 250px;
 }
 
+.login > p > a {
+  color: dodgerblue;
+  text-decoration: none;
+}
+
+.login > p > a:visited {
+  color: dodgerblue;
+}
+
+.log > p > a:hover {
+  color: darkcyan;
+}
+
 .login > img {
   max-width: 96px;
   max-height: 96px;
@@ -56,8 +69,6 @@
 
 .login-submit {
   margin-bottom: 15px;
-  margin-right: auto;
-  margin-left: auto;
   background-color: dodgerblue;
   font-family: Monaco, "Lucida Console", monospace;
   color: white;
@@ -65,4 +76,5 @@
   height: 40px;
   border: 0 dodgerblue;
   border-radius: 2px;
+  margin-left: 85px;
 }

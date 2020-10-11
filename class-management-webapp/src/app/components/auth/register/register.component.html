@@ -3,6 +3,12 @@
     <app-guest-header></app-guest-header>
   </ng-container>
   <ng-container slot="main">
+    <div class="message">
+      <p>Sign up for a new account.
+        <br/>
+        Already have an account? Sign in <a routerLink="/login">here</a>.
+      </p>
+    </div>
     <form [formGroup]="registerForm" class="register-form" (ngSubmit)="register()">
       <div class="register-input-field">
         <input type="text" formControlName="name" name="name" placeholder="Name" class="register-input"/>

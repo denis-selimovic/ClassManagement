@@ -49,3 +49,30 @@
   border: 0 dodgerblue;
   border-radius: 2px;
 }
+
+.message {
+  width: 00px;
+  min-width: 300px;
+}
+
+.message > p {
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 14px;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+}
+
+.message > p > a {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.message > p > a:visited {
+  color: dodgerblue;
+}
+
+.message > p > a:hover {
+  color: darkcyan;
+}
