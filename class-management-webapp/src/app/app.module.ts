@@ -15,6 +15,7 @@ import { UserDashboardComponent } from './components/dashboard/user-dashboard/us
 import { GuestDashboardComponent } from './components/dashboard/guest-dashboard/guest-dashboard.component';
 import { GuestHeaderComponent } from './components/headers/guest-header/guest-header.component';
 import { SearchBarComponent } from './components/input/search-bar/search-bar.component';
+import { GuestFooterComponent } from './components/footer/guest-footer/guest-footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     UserDashboardComponent,
     GuestDashboardComponent,
     GuestHeaderComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    GuestFooterComponent
   ],
   imports: [
     BrowserModule,
