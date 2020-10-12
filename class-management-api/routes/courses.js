@@ -60,7 +60,9 @@ router.post('/:id/rate', auth, checkRoles([ROLE_USER]), async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const courses = await Course.find({});
+        const name = req.query.name;
+        const searchCondition = !name ? {} : { name: {$regex: name, $options: "i" } };
+        const courses = await Course.find(searchCondition);
         res.status(200).json(courses)
     } catch (e) {
         res.status(401).json({ message: 'Could not load items' })
