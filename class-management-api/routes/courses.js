@@ -28,7 +28,7 @@ router.post('/enroll/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'students');
         const user = req.user;
-        if (course.students.map(s => s._id).includes(user._id)) {
+        if (course.students.map(s => s._id.toString()).includes(user._id.toString())) {
             return res.status(400).json({ message: 'User already enrolled' });
         }
         course.students.push(user);
@@ -36,6 +36,25 @@ router.post('/enroll/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
         res.status(200).json(course);
     } catch (e) {
         res.status(400).json({ message: 'Could not load item'});
+    }
+});
+
+router.post('/:id/rate', auth, checkRoles([ROLE_USER]), async (req, res) => {
+    try {
+        const course = await Course.getCourseByIdAndPopulate(req.params.id, 'students');
+        const user = req.user;
+        if (!course.students.map(s => s._id.toString()).includes(user._id.toString())) {
+            return res.status(400).json({ message: 'User not enrolled' });
+        }
+        const value = req.body['value'];
+        if (!value || value < 1 || value > 5) {
+            return res.status(400).json({ message: 'Could not rate course' });
+        }
+        course.rating = { total: course.rating.total + value, count: course.rating.count + 1 };
+        await course.save();
+        res.status(200).json(course);
+    } catch (e) {
+        res.status(400).json({ message: 'Could not rate course' });
     }
 });
 

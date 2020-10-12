@@ -23,16 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b26d4bb1-4e9e-4bcb-9ff8-ce50b6b9bf83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-list/course-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-list/course-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/polyfills.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Course.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/Course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/courses.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +85,7 @@
       <workItem from="1600725249700" duration="2405000" />
       <workItem from="1600793998979" duration="3745000" />
       <workItem from="1602513477990" duration="1068000" />
+      <workItem from="1602532907442" duration="629000" />
     </task>
     <servers />
   </component>

@@ -26,6 +26,18 @@ const courseSchema = new Schema({
     owner: {
         type: String,
         required: true
+    },
+    rating: {
+        total: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        count: {
+            type: Number,
+            default: 0,
+            required: true
+        }
     }
 });
 
