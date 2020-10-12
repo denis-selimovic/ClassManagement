@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Course, CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,16 +11,23 @@ export class SearchBarComponent implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  @Output() search = new EventEmitter<Array<Course>>();
+
+  constructor(private formBuilder: FormBuilder, private courseService: CourseService) {
     this.formGroup = this.formBuilder.group({
       search: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
+    this.courseService.loadCourses().subscribe(courses => {
+      this.search.emit(courses);
+    });
   }
 
   searchCourses(): void {
-    console.log(this.formGroup.get('search').value);
+    this.courseService.loadCourses().subscribe(courses => {
+      this.search.emit(courses);
+    });
   }
 }

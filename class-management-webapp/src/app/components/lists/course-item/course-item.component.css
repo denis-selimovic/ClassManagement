@@ -35,3 +35,8 @@
   font-size: 14px;
   font-weight: lighter;
 }
+
+.enrolled {
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 10px;
+}

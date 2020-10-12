@@ -11,6 +11,7 @@ export interface Course {
   description: string;
   owner: string;
   rating: Rating;
+
 }
 
 @Injectable({

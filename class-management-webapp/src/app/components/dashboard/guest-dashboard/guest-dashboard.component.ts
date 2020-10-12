@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-guest-dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestDashboardComponent implements OnInit {
 
+  courses: Array<Course> = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  loadCourses($event: Array<Course>): void {
+    this.courses = $event;
+  }
 }
