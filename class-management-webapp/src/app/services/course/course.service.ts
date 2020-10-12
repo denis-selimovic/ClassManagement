@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+export interface Rating {
+  total: number;
+  count: number;
+}
+
 export interface Course {
   name: string;
   description: string;
   owner: string;
+  rating: Rating;
 }
 
 @Injectable({

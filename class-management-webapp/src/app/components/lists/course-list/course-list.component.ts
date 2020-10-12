@@ -15,7 +15,9 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.loadCourses().subscribe(courses => {
       courses.forEach(c => {
-        this.courses.push({name: c.name, description: c.description, owner: c.owner});
+        this.courses.push({
+          name: c.name, description: c.description, owner: c.owner, rating: { total: c.rating.total, count: c.rating.count }
+        });
       });
       console.log(this.courses);
     });
