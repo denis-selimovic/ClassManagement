@@ -24,4 +24,8 @@ export class CourseService {
   loadCourses(): any {
     return this.http.get('http://localhost:3000/courses');
   }
+
+  loadCoursesByName(name: string): any {
+    return this.http.get('http://localhost:3000/courses?name=' + name);
+  }
 }

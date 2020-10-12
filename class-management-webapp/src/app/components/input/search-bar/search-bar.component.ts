@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchCourses(): void {
-    this.courseService.loadCourses().subscribe(courses => {
+    this.courseService.loadCoursesByName(this.formGroup.get('search').value).subscribe(courses => {
       this.search.emit(courses);
     });
   }
