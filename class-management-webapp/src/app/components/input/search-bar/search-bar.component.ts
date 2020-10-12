@@ -20,13 +20,22 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.courseService.loadCourses().subscribe(courses => {
+    this.searchCourses();
+    this.formGroup.get('search').valueChanges.subscribe(value => {
+      if (!value || value === '') {
+        this.searchCourses();
+      }
+    });
+  }
+
+  searchCoursesName(): void {
+    this.courseService.loadCoursesByName(this.formGroup.get('search').value).subscribe(courses => {
       this.search.emit(courses);
     });
   }
 
   searchCourses(): void {
-    this.courseService.loadCoursesByName(this.formGroup.get('search').value).subscribe(courses => {
+    this.courseService.loadCourses().subscribe(courses => {
       this.search.emit(courses);
     });
   }

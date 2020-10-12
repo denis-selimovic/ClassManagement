@@ -1,4 +1,6 @@
-<form class="search-form" [formGroup]="formGroup" (ngSubmit)="searchCourses()">
-  <input class="search-bar" type="submit" value="Search" [disabled]="formGroup.invalid"/>
+<form class="search-form" [formGroup]="formGroup" (ngSubmit)="searchCoursesName()">
+  <button class="search-bar" type="submit" value="Search" [disabled]="formGroup.invalid">
+    <img class="search-button" src="assets/search.png" alt="search"/>
+  </button>
   <input class="search-bar" type="text" name="search" formControlName="search" placeholder="Search courses"/>
 </form>
