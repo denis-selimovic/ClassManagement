@@ -4,6 +4,6 @@
     <div class="description font-type">{{course.description}}</div>
   </div>
   <div class="rating">
-    <ngb-rating rate="4.7" max="5" ></ngb-rating>
+    <ngb-rating [rate]="getRate()" max="5" [readonly]="isReadOnly()"></ngb-rating>
   </div>
 </div>

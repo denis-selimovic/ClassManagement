@@ -23,8 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b26d4bb1-4e9e-4bcb-9ff8-ce50b6b9bf83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/model/Course.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/Course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-item/course-item.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +86,7 @@
       <workItem from="1600725249700" duration="2405000" />
       <workItem from="1600793998979" duration="3745000" />
       <workItem from="1602513477990" duration="1068000" />
-      <workItem from="1602532907442" duration="629000" />
+      <workItem from="1602532907442" duration="1243000" />
     </task>
     <servers />
   </component>
@@ -109,22 +110,22 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="696" y="305" width="524" height="512" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1600520877813" />
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1602517684847">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1602533540389">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1602517684847" />
-    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1602517684846">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1602533540389" />
+    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1602533540387">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1602517684846" />
-    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1602517684845">
+    <state width="1899" height="277" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1602533540387" />
+    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1602533540386">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1602517684845" />
-    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1602517684846">
+    <state width="1899" height="277" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1602533540386" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1602533540388">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1602517684846" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1602533540388" />
     <state width="1899" height="342" key="GridCell.Tab.1.bottom" timestamp="1600641759697">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
