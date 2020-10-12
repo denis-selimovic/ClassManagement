@@ -41,7 +41,7 @@ router.post('/enroll/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const courses = await Course.find({});
+        const courses = await Course.find({}).populate('owner');
         res.status(200).json(courses)
     } catch (e) {
         res.status(401).json({ message: 'Could not load items' })
