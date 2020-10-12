@@ -39,6 +39,15 @@ router.post('/enroll/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    try {
+        const courses = await Course.find({});
+        res.status(200).json(courses)
+    } catch (e) {
+        res.status(401).json({ message: 'Could not load items' })
+    }
+});
+
 router.post('/leave/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'students');
