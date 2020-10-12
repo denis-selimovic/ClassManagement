@@ -19,6 +19,7 @@ import { GuestFooterComponent } from './components/footer/guest-footer/guest-foo
 import { CourseService } from './services/course/course.service';
 import { CourseListComponent } from './components/lists/course-list/course-list.component';
 import { CourseItemComponent } from './components/lists/course-item/course-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     UserService,
