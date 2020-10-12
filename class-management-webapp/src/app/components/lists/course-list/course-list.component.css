@@ -1,0 +1,14 @@
+.flex-list {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+
+.flex-item {
+  width: 400px;
+  min-width: 400px;
+  max-height: 120px;
+  min-height: 120px;
+  padding: 20px 10px;
+}

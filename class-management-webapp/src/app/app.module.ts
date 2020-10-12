@@ -17,6 +17,8 @@ import { GuestHeaderComponent } from './components/headers/guest-header/guest-he
 import { SearchBarComponent } from './components/input/search-bar/search-bar.component';
 import { GuestFooterComponent } from './components/footer/guest-footer/guest-footer.component';
 import { CourseService } from './services/course/course.service';
+import { CourseListComponent } from './components/lists/course-list/course-list.component';
+import { CourseItemComponent } from './components/lists/course-item/course-item.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     GuestDashboardComponent,
     GuestHeaderComponent,
     SearchBarComponent,
-    GuestFooterComponent
+    GuestFooterComponent,
+    CourseListComponent,
+    CourseItemComponent
   ],
   imports: [
     BrowserModule,
