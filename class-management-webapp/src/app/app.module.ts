@@ -16,6 +16,7 @@ import { GuestDashboardComponent } from './components/dashboard/guest-dashboard/
 import { GuestHeaderComponent } from './components/headers/guest-header/guest-header.component';
 import { SearchBarComponent } from './components/input/search-bar/search-bar.component';
 import { GuestFooterComponent } from './components/footer/guest-footer/guest-footer.component';
+import { CourseService } from './services/course/course.service';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     UserService,
+    CourseService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]
