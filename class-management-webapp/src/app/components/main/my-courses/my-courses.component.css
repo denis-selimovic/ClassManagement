@@ -1,0 +1,17 @@
+.course-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+  margin: 20px;
+}
+
+.course {
+  width: 200px;
+  height: 200px;
+  background-color: dodgerblue;
+  overflow: hidden;
+  font-family: Monaco, "Lucida Console", monospace;
+  color: whitesmoke;
+  border-radius: 7px;
+}

@@ -40,6 +40,12 @@ router.get('/me', auth, checkRoles([ROLE_USER]), async (req, res) => {
     res.status(200).json(req.user);
 });
 
+router.get('/my-courses', auth, async (req, res) => {
+    const user = req.user;
+    const courses = await user.courses();
+    res.json(courses);
+});
+
 module.exports = router;
 
 
