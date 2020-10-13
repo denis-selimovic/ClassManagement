@@ -85,4 +85,13 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
     }
 });
 
+router.get('/:id/setup', auth, async (req, res) => {
+    try {
+        const assignment = await Assignment.getAssignmentById(req.params.id).populate('setup');
+        res.status(200).json(assignment.setup);
+    } catch (e) {
+        res.status(404).json({ message: 'Resource not found' })
+    }
+});
+
 module.exports = router;
