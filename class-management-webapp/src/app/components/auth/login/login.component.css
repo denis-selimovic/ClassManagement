@@ -3,6 +3,18 @@
   min-width: 300px;
 }
 
+.login-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  place-items: center;
+}
+
+.login-grid-cell {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
 .login > p {
   font-family: Monaco, "Lucida Console", monospace;
   font-size: 16px;

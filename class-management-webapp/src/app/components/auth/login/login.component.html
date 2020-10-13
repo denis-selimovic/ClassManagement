@@ -3,32 +3,36 @@
     <app-guest-header></app-guest-header>
   </ng-container>
   <ng-container slot="main">
-    <div class="login">
-      <p>Log in to your account :)</p>
-      <img alt="user" src="assets/user.png"/>
-    </div>
-    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
-      <div class="login-input-field">
-        <input type="text" formControlName="username" name="username" placeholder="Username" class="login-input"/>
-        <div class="error-input" *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid">
-          Username is required
+    <div class="login-grid">
+      <div class="login-grid-cell">
+        <div class="login">
+          <p>Log in to your account :)</p>
+          <img alt="user" src="assets/user.png"/>
+        </div>
+        <form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+          <div class="login-input-field">
+            <input type="text" formControlName="username" name="username" placeholder="Username" class="login-input"/>
+            <div class="error-input" *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid">
+              Username is required
+            </div>
+          </div>
+          <div class="login-input-field">
+            <input type="password" formControlName="password" name="password" placeholder="Password" class="login-input"/>
+            <div class="error-input" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+              Password is required
+            </div>
+          </div>
+          <div class="login-input-field">
+            <input class="login-submit" value="Submit" type="submit" [disabled]="loginForm.invalid"/>
+            <div class="error-input" *ngIf="failedLogin">
+              Incorrect username or password
+            </div>
+          </div>
+        </form>
+        <div class="login">
+          <p>If you don't have an account, sign up <a routerLink="/register">here</a>.</p>
         </div>
       </div>
-      <div class="login-input-field">
-        <input type="password" formControlName="password" name="password" placeholder="Password" class="login-input"/>
-        <div class="error-input" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
-          Password is required
-        </div>
-      </div>
-      <div class="login-input-field">
-        <input class="login-submit" value="Submit" type="submit" [disabled]="loginForm.invalid"/>
-        <div class="error-input" *ngIf="failedLogin">
-          Incorrect username or password
-        </div>
-      </div>
-    </form>
-    <div class="login">
-      <p>If you don't have an account, sign up <a routerLink="/register">here</a>.</p>
     </div>
   </ng-container>
   <ng-container slot="footer">
