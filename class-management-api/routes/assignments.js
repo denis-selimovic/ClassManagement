@@ -89,7 +89,6 @@ router.get('/:id/setup', auth, async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
         const { _id, name, mimetype, owner, uploadedBy } = assignment.setup;
-        console.log(assignment.setup.data);
         res.status(200).json({ _id, name, mimetype, owner, uploadedBy, data: assignment.setup.data.toString('utf-8') });
     } catch (e) {
         res.status(404).json({ message: 'Resource not found' })
