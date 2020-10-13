@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentService } from '../../../services/assignment/assignment.service';
+import { Assignment } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-my-assignments',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAssignmentsComponent implements OnInit {
 
-  constructor() { }
+  courses: any = {};
+  assignments: Array<Assignment> = [];
+
+  constructor(private assignmentService: AssignmentService) { }
 
   ngOnInit(): void {
+    this.assignmentService.loadMyAssignments().subscribe(courses => {
+      courses.forEach(c => {
+        c.assignments.forEach(a => this.assignments.push(a));
+        this.courses[c._id] = c;
+      });
+      console.log(this.courses);
+    });
   }
 
 }

@@ -1,1 +1,7 @@
-<p>my-assignments works!</p>
+<div class="grid">
+  <div class="assignments">
+    <ng-container *ngFor="let assignment of assignments">
+      <app-assignment-item [assignment]="assignment" [course]="courses[assignment.owner]"></app-assignment-item>
+    </ng-container>
+  </div>
+</div>
