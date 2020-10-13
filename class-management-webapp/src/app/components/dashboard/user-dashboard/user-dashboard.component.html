@@ -1,26 +1,11 @@
-<div class="ui grid side-menu">
-  <div class="two wide column">
-    <div class="ui blue inverted vertical menu">
-      <a class="active teal item">
-        Inbox
-        <div class="ui teal left pointing label">1</div>
-      </a>
-      <a class="item">
-        Spam
-        <div class="ui label">51</div>
-      </a>
-      <a class="item">
-        Updates
-        <div class="ui label">1</div>
-      </a>
-      <div class="item">
-        <div class="ui transparent icon input">
-          <input type="text" placeholder="Search mail...">
-          <i class="search icon"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="fourteen wide column">
-  </div>
-</div>
+<app-navbar>
+  <ng-container slot="header">
+    <app-user-header></app-user-header>
+  </ng-container>
+  <ng-container slot="main">
+
+  </ng-container>
+  <ng-container slot="footer">
+    <app-guest-footer></app-guest-footer>
+  </ng-container>
+</app-navbar>

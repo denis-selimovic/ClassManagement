@@ -20,6 +20,7 @@ import { CourseService } from './services/course/course.service';
 import { CourseListComponent } from './components/lists/course-list/course-list.component';
 import { CourseItemComponent } from './components/lists/course-item/course-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserHeaderComponent } from './components/headers/user-header/user-header.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     SearchBarComponent,
     GuestFooterComponent,
     CourseListComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    UserHeaderComponent
   ],
   imports: [
     BrowserModule,
