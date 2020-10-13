@@ -1,5 +1,9 @@
-<div class="flex-list">
-  <div class="flex-item " *ngFor="let course of courses">
-    <app-course-item [course]="course"></app-course-item>
+<div class="grid-list">
+  <div class="grid-list-item">
+    <div class="flex-list">
+      <div class="flex-item " *ngFor="let course of courses">
+        <app-course-item [course]="course"></app-course-item>
+      </div>
+    </div>
   </div>
 </div>
