@@ -8,7 +8,9 @@
     <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
       <ngb-panel title="Setup" id="setup">
         <ng-template ngbPanelContent>
-          Hello
+          <div (click)="download()">
+            {{setup?.name}}
+          </div>
         </ng-template>
       </ngb-panel>
       <ngb-panel title="Uploads" id="upload">

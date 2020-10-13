@@ -20,8 +20,6 @@ export class MyAssignmentsComponent implements OnInit {
         c.assignments.forEach(a => this.assignments.push(a));
         this.courses[c._id] = c;
       });
-      console.log(this.courses);
-      console.log(this.assignments);
     });
   }
 

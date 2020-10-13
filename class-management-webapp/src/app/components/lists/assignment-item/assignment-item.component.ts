@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Assignment, Course } from '../../../services/course/course.service';
-import {NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
+import { Assignment, Course, Upload } from '../../../services/course/course.service';
+import { NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { AssignmentService } from '../../../services/assignment/assignment.service';
+import * as fileSaver from 'file-saver';
+import set = Reflect.set;
 
 @Component({
   selector: 'app-assignment-item',
@@ -12,9 +15,9 @@ export class AssignmentItemComponent implements OnInit {
   @Input() assignment: Assignment;
   @Input() course: Course;
 
-  private loaderMap = { setup: this.loadSetup, upload: this.loadUploads };
+  setup: Upload;
 
-  constructor() { }
+  constructor(private assignmentService: AssignmentService) { }
 
   ngOnInit(): void {
   }
@@ -24,14 +27,21 @@ export class AssignmentItemComponent implements OnInit {
     if (!nextState) {
       return;
     }
-    this.loaderMap[panelId]();
+    (panelId === 'setup') ? this.loadSetup() : this.loadUploads();
   }
 
   loadSetup(): void {
-    console.log('Panel setup');
+    this.assignmentService.loadSetup(this.assignment._id).subscribe(setup => this.setup = setup);
   }
 
+
   loadUploads(): void {
-    console.log('Panel upload');
+  }
+
+  download(): void {
+    this.assignmentService.downloadSetup(this.assignment._id).subscribe(setup => {
+      const blob = new Blob([setup.data], { type: setup.mimetype });
+      fileSaver.saveAs(blob, this.setup.name);
+    });
   }
 }

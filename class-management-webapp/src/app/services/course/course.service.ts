@@ -12,6 +12,8 @@ export interface Upload {
   name: string;
   owner: string;
   uploadedBy: User;
+  data: any;
+  _id: any;
 }
 
 export interface Assignment {
@@ -21,6 +23,7 @@ export interface Assignment {
   owner: string;
   dueDate: Date;
   courseId: string;
+  _id: any;
 }
 
 export interface Course {

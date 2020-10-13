@@ -61,7 +61,6 @@ assignmentSchema.statics.getAssignmentByIdAndUpdate = async (id, body, userId) =
 
 assignmentSchema.statics.getAssignmentById = async id => {
     const assignment = await Assignment.findById(id).populate('uploads').populate('setup');
-    console.log(assignment);
     if (!assignment) {
         throw new Error();
     }
