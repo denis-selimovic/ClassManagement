@@ -1,0 +1,30 @@
+.user-header {
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.right-floated-header {
+  justify-content: right;
+}
+
+.user-header-item {
+  margin: 30px;
+}
+
+.user-header-name {
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: lightgray;
+}
