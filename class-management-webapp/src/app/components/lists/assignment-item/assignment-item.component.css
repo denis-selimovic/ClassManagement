@@ -37,3 +37,11 @@
   color: dodgerblue;
 }
 
+.download-link:hover {
+  cursor: pointer;
+}
+
+.download-link {
+  padding-left: 20px;
+}
+
