@@ -46,4 +46,11 @@ export class UserService {
   getUser(): User {
     return this.user;
   }
+
+  getToken(): string {
+    if (!this.user) {
+      return '';
+    }
+    return 'Bearer ' + this.user.token;
+  }
 }

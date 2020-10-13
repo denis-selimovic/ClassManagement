@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../user/user.service';
 
 export interface Rating {
   total: number;
@@ -19,7 +20,7 @@ export interface Course {
 })
 export class CourseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   loadCourses(): any {
     return this.http.get('http://localhost:3000/courses');
@@ -27,5 +28,13 @@ export class CourseService {
 
   loadCoursesByName(name: string): any {
     return this.http.get('http://localhost:3000/courses?name=' + name);
+  }
+
+  loadMyCourses(): any {
+    return this.http.get('http://localhost:3000/users/my-courses', {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
   }
 }
