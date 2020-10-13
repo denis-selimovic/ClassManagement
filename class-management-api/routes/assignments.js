@@ -22,7 +22,7 @@ router.post('/:id/setup', auth, checkRoles([ROLE_TUTOR]), upload.single('file'),
         if (!assignment || assignment.owner !== req.user._id.toString() || !req.file) {
             return res.status(400).json({ message: 'Unable to access item' });
         }
-        if (assignment.setup._id) {
+        if (assignment.setup && assignment.setup._id) {
             await assignment.setup.remove();
         }
         assignment.setup = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);
@@ -87,7 +87,7 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
 
 router.get('/:id/setup', auth, async (req, res) => {
     try {
-        const assignment = await Assignment.getAssignmentById(req.params.id).populate('setup');
+        const assignment = await Assignment.getAssignmentById(req.params.id);
         res.status(200).json(assignment.setup);
     } catch (e) {
         res.status(404).json({ message: 'Resource not found' })
