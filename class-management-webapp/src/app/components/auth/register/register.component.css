@@ -3,6 +3,18 @@
   min-width: 500px;
 }
 
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+}
+
+.register-grid-cell {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
 .register-input-field {
   min-width: 500px;
   width: 500px;

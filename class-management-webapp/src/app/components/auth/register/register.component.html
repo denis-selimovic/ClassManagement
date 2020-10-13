@@ -3,53 +3,57 @@
     <app-guest-header></app-guest-header>
   </ng-container>
   <ng-container slot="main">
-    <div class="message">
-      <p>Sign up for a new account.
-        <br/>
-        Already have an account? Sign in <a routerLink="/login">here</a>.
-      </p>
+    <div class="register-grid">
+      <div class="register-grid-cell">
+        <div class="message">
+          <p>Sign up for a new account.
+            <br/>
+            Already have an account? Sign in <a routerLink="/login">here</a>.
+          </p>
+        </div>
+        <form [formGroup]="registerForm" class="register-form" (ngSubmit)="register()">
+          <div class="register-input-field">
+            <input type="text" formControlName="name" name="name" placeholder="Name" class="register-input"/>
+            <div class="error-input" *ngIf="registerForm.get('name').touched && registerForm.get('name').invalid">
+              Name is required
+            </div>
+          </div>
+          <div class="register-input-field">
+            <input type="text" formControlName="surname" name="surname" placeholder="Surname" class="register-input"/>
+            <div class="error-input" *ngIf="registerForm.get('surname').touched && registerForm.get('surname').invalid">
+              Surname is required
+            </div>
+          </div>
+          <div class="register-input-field">
+            <input type="text" formControlName="username" name="username" placeholder="Username" class="register-input"/>
+            <div class="error-input" *ngIf="registerForm.get('username').touched && registerForm.get('username').invalid">
+              {{registerForm.controls.username.errors?.required ? 'Username is required' : 'Username must have minimum 5 characters'}}
+            </div>
+          </div>
+          <div class="register-input-field">
+            <input type="password" formControlName="password" name="password" placeholder="Password" class="register-input"/>
+            <div class="error-input"*ngIf="registerForm.get('password').touched && registerForm.get('password').invalid">
+              {{registerForm.controls.password.errors?.required ? 'Password is required' : 'Password must have minimum 8 characters'}}
+            </div>
+          </div>
+          <div class="register-input-field">
+            <input type="email" formControlName="email" name="email" placeholder="Email" class="register-input"/>
+            <div class="error-input" *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid">
+              {{registerForm.controls.email.errors?.required ? 'Email is required' : 'Wrong email format'}}
+            </div>
+          </div>
+          <div class="register-input-field">
+            <input class="register-submit" value="Register" type="submit" [disabled]="registerForm.invalid"/>
+            <div class="error-input" *ngIf="failedRegistration">
+              Username or email already in use
+            </div>
+            <div class="error-input success-input" *ngIf="registered">
+              Successfully registered to CManage. You can login now.
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <form [formGroup]="registerForm" class="register-form" (ngSubmit)="register()">
-      <div class="register-input-field">
-        <input type="text" formControlName="name" name="name" placeholder="Name" class="register-input"/>
-        <div class="error-input" *ngIf="registerForm.get('name').touched && registerForm.get('name').invalid">
-          Name is required
-        </div>
-      </div>
-      <div class="register-input-field">
-        <input type="text" formControlName="surname" name="surname" placeholder="Surname" class="register-input"/>
-        <div class="error-input" *ngIf="registerForm.get('surname').touched && registerForm.get('surname').invalid">
-          Surname is required
-        </div>
-      </div>
-      <div class="register-input-field">
-        <input type="text" formControlName="username" name="username" placeholder="Username" class="register-input"/>
-        <div class="error-input" *ngIf="registerForm.get('username').touched && registerForm.get('username').invalid">
-          {{registerForm.controls.username.errors?.required ? 'Username is required' : 'Username must have minimum 5 characters'}}
-        </div>
-      </div>
-      <div class="register-input-field">
-        <input type="password" formControlName="password" name="password" placeholder="Password" class="register-input"/>
-        <div class="error-input"*ngIf="registerForm.get('password').touched && registerForm.get('password').invalid">
-          {{registerForm.controls.password.errors?.required ? 'Password is required' : 'Password must have minimum 8 characters'}}
-        </div>
-      </div>
-      <div class="register-input-field">
-        <input type="email" formControlName="email" name="email" placeholder="Email" class="register-input"/>
-        <div class="error-input" *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid">
-          {{registerForm.controls.email.errors?.required ? 'Email is required' : 'Wrong email format'}}
-        </div>
-      </div>
-      <div class="register-input-field">
-        <input class="register-submit" value="Register" type="submit" [disabled]="registerForm.invalid"/>
-        <div class="error-input" *ngIf="failedRegistration">
-          Username or email already in use
-        </div>
-        <div class="error-input success-input" *ngIf="registered">
-          Successfully registered to CManage. You can login now.
-        </div>
-      </div>
-    </form>
   </ng-container>
   <ng-container slot="footer">
     <app-guest-footer></app-guest-footer>
