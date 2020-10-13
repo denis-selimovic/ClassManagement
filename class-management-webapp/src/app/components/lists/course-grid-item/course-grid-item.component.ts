@@ -14,8 +14,6 @@ export class CourseGridItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.course._id);
-    console.log(typeof this.course._id);
   }
 
   getRating(): number {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from '../user/user.service';
+import { UserService, User } from '../user/user.service';
 
 export interface Rating {
   total: number;
@@ -13,7 +13,7 @@ export interface Course {
   description: string;
   owner: string;
   rating: Rating;
-
+  students: any;
 }
 
 @Injectable({
@@ -37,5 +37,9 @@ export class CourseService {
         Authorization: this.userService.getToken()
       }
     });
+  }
+
+  isEnrolled(course: Course): boolean {
+    return course.students.includes(this.userService.getUser()._id);
   }
 }

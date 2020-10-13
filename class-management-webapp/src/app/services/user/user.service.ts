@@ -6,6 +6,7 @@ export interface Role {
 }
 
 export interface User {
+  _id: any;
   username: string;
   name: string;
   surname: string;
@@ -32,11 +33,11 @@ export class UserService {
   }
 
   setUser(userData, token): void {
-    const { username, name, surname, email } = userData;
+    const { _id, username, name, surname, email } = userData;
     const roles: Role[] = userData.roles.map(r => {
       return { role: r.role };
     });
-    this.user = { username, name, surname, email, token, roles };
+    this.user = { _id, username, name, surname, email, token, roles };
   }
 
   clearUser(): void {
