@@ -56,6 +56,11 @@ userSchema.methods.courses = async function () {
     return await Course.find({students: {$elemMatch: {$eq: {_id: this._id}}}});
 }
 
+userSchema.methods.coursesWithAssignments = async function () {
+    const Course = this.model('Course');
+    return await Course.find({ students: { $elemMatch: { $eq: { _id: this._id } } } }).populate('assignments');
+}
+
 userSchema.statics.findByCredentials = async (username, password) => {
     const user = await User.findOne({ username });
     if (!user) {
