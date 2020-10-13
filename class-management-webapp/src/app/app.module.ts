@@ -25,6 +25,7 @@ import { MainMenuComponent } from './components/menus/main-menu/main-menu.compon
 import { MyCoursesComponent } from './components/main/my-courses/my-courses.component';
 import { MyAssignmentsComponent } from './components/main/my-assignments/my-assignments.component';
 import { CoursesComponent } from './components/main/courses/courses.component';
+import { CourseGridItemComponent } from './components/lists/course-grid-item/course-grid-item.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     MainMenuComponent,
     MyCoursesComponent,
     MyAssignmentsComponent,
-    CoursesComponent
+    CoursesComponent,
+    CourseGridItemComponent
   ],
   imports: [
     BrowserModule,
