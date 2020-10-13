@@ -22,12 +22,19 @@ import { CourseItemComponent } from './components/lists/course-item/course-item.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserHeaderComponent } from './components/headers/user-header/user-header.component';
 import { MainMenuComponent } from './components/menus/main-menu/main-menu.component';
+import { MyCoursesComponent } from './components/main/my-courses/my-courses.component';
+import { MyAssignmentsComponent } from './components/main/my-assignments/my-assignments.component';
+import { CoursesComponent } from './components/main/courses/courses.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: UserDashboardComponent }
+  { path: 'dashboard', component: UserDashboardComponent, children: [
+      { path: 'my-courses', component: MyCoursesComponent },
+      { path: 'my-assignments', component: MyAssignmentsComponent },
+      { path: 'courses', component: CoursesComponent }
+    ]}
 ];
 
 @NgModule({
@@ -44,7 +51,10 @@ const appRoutes: Routes = [
     CourseListComponent,
     CourseItemComponent,
     UserHeaderComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    MyCoursesComponent,
+    MyAssignmentsComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
