@@ -8,6 +8,7 @@ export interface Rating {
 }
 
 export interface Course {
+  _id: any;
   name: string;
   description: string;
   owner: string;

@@ -1,1 +1,15 @@
-<p>course-grid-item works!</p>
+<div class="course-card">
+  <div class="course-name">{{course.name}}</div>
+  <div class="course-desc">{{course.description}}</div>
+  <div class="course-info">
+    <div class="course-students">x students enrolled</div>
+    <div class="course-assignments">x assignments</div>
+  </div>
+  <div class="course-rating">
+    <ngb-rating [rate]="getRating()" max="5"></ngb-rating>
+  </div>
+  <div class="course-options">
+    <button class="enroll" [disabled]="button">Enroll</button>
+    <button class="withdraw" [disabled]="!button" >Withdraw</button>
+  </div>
+</div>

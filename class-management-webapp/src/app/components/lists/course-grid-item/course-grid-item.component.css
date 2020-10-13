@@ -1,0 +1,74 @@
+.course-card {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 10px;
+}
+
+.course-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.course-desc {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.course-info {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 11px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.course-students {
+  justify-self: flex-start;
+}
+
+.course-assignments {
+  justify-self: flex-end;
+}
+
+.course-rating {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.course-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.enroll {
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: lightgreen;
+  border: 0;
+}
+
+.withdraw {
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: indianred;
+  border: 0;
+}
+
+.enroll:hover {
+  background-color: lightgreen;
+}
+
+.withdraw:hover {
+  background-color: indianred;
+}
+
+button[disabled] {
+  background-color: gray;
+}
+
+button[disabled]:hover {
+  background-color: gray;
+}
