@@ -46,6 +46,12 @@ router.get('/my-courses', auth, async (req, res) => {
     res.json(courses);
 });
 
+router.get('/my-assignments', auth, async (req, res) => {
+    const user = req.user;
+    const courses = await user.coursesWithAssignments();
+    res.json(courses);
+});
+
 module.exports = router;
 
 

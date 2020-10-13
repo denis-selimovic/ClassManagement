@@ -7,6 +7,21 @@ export interface Rating {
   count: number;
 }
 
+export interface Upload {
+  mimetype: string;
+  name: string;
+  owner: string;
+  uploadedBy: User;
+}
+
+export interface Assignment {
+  name: string;
+  setup: Upload;
+  uploads: Array<Upload>;
+  owner: string;
+  dueDate: Date;
+}
+
 export interface Course {
   _id: any;
   name: string;
@@ -14,6 +29,7 @@ export interface Course {
   owner: string;
   rating: Rating;
   students: any;
+  assignments: any;
 }
 
 @Injectable({
