@@ -21,6 +21,7 @@ import { CourseListComponent } from './components/lists/course-list/course-list.
 import { CourseItemComponent } from './components/lists/course-item/course-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserHeaderComponent } from './components/headers/user-header/user-header.component';
+import { MainMenuComponent } from './components/menus/main-menu/main-menu.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     GuestFooterComponent,
     CourseListComponent,
     CourseItemComponent,
-    UserHeaderComponent
+    UserHeaderComponent,
+    MainMenuComponent
   ],
   imports: [
     BrowserModule,
