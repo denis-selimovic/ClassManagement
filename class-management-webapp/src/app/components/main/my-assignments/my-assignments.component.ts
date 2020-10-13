@@ -21,6 +21,7 @@ export class MyAssignmentsComponent implements OnInit {
         this.courses[c._id] = c;
       });
       console.log(this.courses);
+      console.log(this.assignments);
     });
   }
 

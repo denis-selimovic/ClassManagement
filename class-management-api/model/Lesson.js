@@ -18,6 +18,10 @@ const lessonSchema = new Schema({
     owner: {
         type: String,
         required: true
+    },
+    course: {
+        type: String,
+        required: true
     }
 });
 

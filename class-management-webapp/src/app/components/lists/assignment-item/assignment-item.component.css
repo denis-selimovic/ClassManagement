@@ -1,0 +1,32 @@
+.assignment {
+  min-height: 220px;
+  width: 600px;
+  background-color: dodgerblue;
+  margin-bottom: 10px;
+  font-family: Monaco, "Lucida Console", monospace;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+.name {
+  font-size: 18px;
+  min-height: 50px;
+  max-height: 50px;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.course {
+
+}
+
+.date {
+
+}
