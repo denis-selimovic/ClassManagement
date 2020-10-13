@@ -24,9 +24,16 @@
 }
 
 .course {
-
+  padding-left: 10px;
 }
 
 .date {
-
+  padding-right: 10px;
 }
+
+.accordion {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: dodgerblue;
+}
+

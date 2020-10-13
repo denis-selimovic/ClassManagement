@@ -20,7 +20,7 @@ export interface Assignment {
   uploads: Array<Upload>;
   owner: string;
   dueDate: Date;
-  course: string;
+  courseId: string;
 }
 
 export interface Course {

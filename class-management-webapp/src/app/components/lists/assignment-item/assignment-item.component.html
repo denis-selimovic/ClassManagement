@@ -1,7 +1,21 @@
 <div class="assignment">
   <div class="name">{{assignment.name}}</div>
   <div class="info">
-    <div class="course">{{course.name}}</div>
-    <div class="date">{{assignment.dueDate | date: "dd.MM.yyyy"}}</div>
+    <div class="course">Course: {{course.name}}</div>
+    <div class="date">Due to: {{assignment.dueDate | date: "dd.MM.yyyy"}}</div>
+  </div>
+  <div class="accordion">
+    <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
+      <ngb-panel title="Setup" id="setup">
+        <ng-template ngbPanelContent>
+          Hello
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Uploads" id="upload">
+        <ng-template ngbPanelContent>
+          Hello
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
   </div>
 </div>
