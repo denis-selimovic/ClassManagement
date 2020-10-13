@@ -7,12 +7,14 @@
 .course-name {
   font-weight: bold;
   font-size: 16px;
-  margin-bottom: 10px;
+  min-height: 40px;
+  max-height: 40px;
 }
 
 .course-desc {
   font-size: 14px;
-  margin-bottom: 10px;
+  min-height: 50px;
+  max-height: 50px;
 }
 
 .course-info {
@@ -20,7 +22,7 @@
   flex-flow: row nowrap;
   font-size: 11px;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-top: 2px;
 }
 
 .course-students {
@@ -35,7 +37,6 @@
   display: flex;
   justify-content: flex-end;
   font-size: 28px;
-  margin-bottom: 5px;
 }
 
 .course-options {

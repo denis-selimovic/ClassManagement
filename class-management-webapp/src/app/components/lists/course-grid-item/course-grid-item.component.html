@@ -6,7 +6,7 @@
     <div class="course-assignments">x assignments</div>
   </div>
   <div class="course-rating">
-    <ngb-rating [rate]="getRating()" max="5"></ngb-rating>
+    <ngb-rating [rate]="getRating()" max="5" [readonly]="!button"></ngb-rating>
   </div>
   <div class="course-options">
     <button class="enroll" [disabled]="button">Enroll</button>
