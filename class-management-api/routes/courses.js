@@ -132,7 +132,7 @@ router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
         }
         const lesson = new Lesson(req.body);
         lesson.owner = req.user._id.toString();
-        lesson.course = course._id.toString();
+        lesson.courseId = course._id.toString();
         await lesson.save();
         course.lessons.push(lesson);
         await course.save();
@@ -153,7 +153,7 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('fi
         }
         const assignment = new Assignment({ name: req.body.name, dueDate: req.body.dueDate });
         assignment.owner = req.user._id.toString();
-        assignment.course = course._id.toString();
+        assignment.courseId = course._id.toString();
         assignment.setExtensions(req.body.extensions);
         if (req.file) {
             const upload = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);;

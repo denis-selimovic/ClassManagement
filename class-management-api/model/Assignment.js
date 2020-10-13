@@ -29,7 +29,7 @@ const assignmentSchema = new Schema({
         type: String,
         required: true
     },
-    course: {
+    courseId: {
         type: String,
         required: true
     }
