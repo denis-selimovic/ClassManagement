@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Assignment, Course, Upload } from '../../../services/course/course.service';
 import { NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { AssignmentService } from '../../../services/assignment/assignment.service';
-import * as fileSaver from 'file-saver';
-import set = Reflect.set;
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-assignment-item',
@@ -16,6 +15,7 @@ export class AssignmentItemComponent implements OnInit {
   @Input() course: Course;
 
   setup: Upload;
+  uploads = {};
 
   constructor(private assignmentService: AssignmentService) { }
 
@@ -36,12 +36,24 @@ export class AssignmentItemComponent implements OnInit {
 
 
   loadUploads(): void {
+    this.assignmentService.loadAssignment(this.assignment._id).subscribe(assignment => {
+      console.log(assignment);
+      assignment.uploads.forEach(upload => {
+        this.uploads[upload._id] = upload;
+      });
+      console.log(this.uploads);
+    });
   }
 
-  download(): void {
-    this.assignmentService.downloadSetup(this.assignment._id).subscribe(setup => {
-      const blob = new Blob([setup.data], { type: setup.mimetype });
-      fileSaver.saveAs(blob, this.setup.name);
+  downloadSetup(): void {
+    const blob = new Blob([this.setup.data], { type: this.setup.mimetype });
+    saveAs(blob, this.setup.name);
+  }
+
+  downloadUpload(key: string): void {
+    this.assignmentService.loadUpload(this.assignment._id, key).subscribe(upload => {
+      const blob = new Blob([upload.data], { type: upload.mimetype });
+      saveAs(blob, upload.name);
     });
   }
 }

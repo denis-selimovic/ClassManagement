@@ -25,8 +25,16 @@ export class AssignmentService {
     });
   }
 
-  downloadSetup(id: string): any {
-    return this.http.get('http://localhost:3000/assignments/' + id + '/setup', {
+  loadAssignment(id: string): any {
+    return this.http.get('http://localhost:3000/assignments/' + id, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
+  loadUpload(id: string, uploadId: string): any {
+    return this.http.get('http://localhost:3000/assignments/' + id + '/upload/' + uploadId, {
       headers: {
         Authorization: this.userService.getToken()
       }

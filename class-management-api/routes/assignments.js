@@ -95,4 +95,15 @@ router.get('/:id/setup', auth, async (req, res) => {
     }
 });
 
+router.get('/:id/upload/:uploadId', auth, async (req, res) => {
+    try {
+        const assignment = await Assignment.getAssignmentById(req.params.id);
+        const upload = assignment.getUpload(req.params.uploadId);
+        const { _id, name, mimetype, owner, uploadedBy } = upload;
+        res.status(200).json({ _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') });
+    } catch (e) {
+        res.status(404).json({ message: 'Resource not found' })
+    }
+});
+
 module.exports = router;
