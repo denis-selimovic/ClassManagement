@@ -36,12 +36,8 @@ export class AssignmentItemComponent implements OnInit {
 
 
   loadUploads(): void {
-    this.assignmentService.loadAssignment(this.assignment._id).subscribe(assignment => {
-      console.log(assignment);
-      assignment.uploads.forEach(upload => {
-        this.uploads[upload._id] = upload;
-      });
-      console.log(this.uploads);
+    this.assignmentService.loadUploads(this.assignment._id).subscribe(uploads => {
+      uploads.forEach(upload => this.uploads[upload._id] = upload);
     });
   }
 
@@ -51,9 +47,8 @@ export class AssignmentItemComponent implements OnInit {
   }
 
   downloadUpload(key: string): void {
-    this.assignmentService.loadUpload(this.assignment._id, key).subscribe(upload => {
-      const blob = new Blob([upload.data], { type: upload.mimetype });
-      saveAs(blob, upload.name);
-    });
+    const upload = this.uploads[key];
+    const blob = new Blob([upload.data], { type: upload.mimetype });
+    saveAs(blob, upload.name);
   }
 }

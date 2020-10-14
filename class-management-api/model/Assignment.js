@@ -46,14 +46,6 @@ assignmentSchema.methods.course = async function () {
     return await Course.findOne({ assignments: { $elemMatch: { $eq: { _id: this._id } } } }).exec();
 };
 
-assignmentSchema.methods.getUpload = function (id) {
-    const upload = this.uploads.find(u => u._id.toString() === id);
-    if (!upload || upload instanceof Array) {
-        throw new Error();
-    }
-    return upload;
-};
-
 assignmentSchema.statics.getAssignmentByIdAndUpdate = async (id, body, userId) => {
     if (!partialBodyValidator(Object.keys(body), ['name', 'dueDate'])) {
         throw new Error();

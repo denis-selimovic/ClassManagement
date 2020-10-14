@@ -95,14 +95,18 @@ router.get('/:id/setup', auth, async (req, res) => {
     }
 });
 
-router.get('/:id/upload/:uploadId', auth, async (req, res) => {
+router.get('/:id/uploads', auth, async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
-        const upload = assignment.getUpload(req.params.uploadId);
-        const { _id, name, mimetype, owner, uploadedBy } = upload;
-        res.status(200).json({ _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') });
+        const uploads = assignment.uploads.filter(upload => upload.uploadedBy.toString() === req.user._id.toString());
+        console.log(uploads);
+        const formattedUploads = uploads.map(upload => {
+            const { _id, name, mimetype, owner, uploadedBy } = upload;
+            return { _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') };
+        });
+        res.status(200).json(formattedUploads);
     } catch (e) {
-        res.status(404).json({ message: 'Resource not found' })
+        res.status(400).json({ message: 'Resource not found' });
     }
 });
 

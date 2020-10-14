@@ -33,8 +33,8 @@ export class AssignmentService {
     });
   }
 
-  loadUpload(id: string, uploadId: string): any {
-    return this.http.get('http://localhost:3000/assignments/' + id + '/upload/' + uploadId, {
+  loadUploads(id: string): any {
+    return this.http.get('http://localhost:3000/assignments/' + id + '/uploads', {
       headers: {
         Authorization: this.userService.getToken()
       }
