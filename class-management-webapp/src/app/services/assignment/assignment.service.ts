@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { UserService } from '../user/user.service';
 
 @Injectable({
@@ -38,6 +38,15 @@ export class AssignmentService {
       headers: {
         Authorization: this.userService.getToken()
       }
+    });
+  }
+
+  upload(id: string, formData: FormData): any {
+    return this.http.post('http://localhost:3000/assignments/' + id + '/upload', formData, {
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data',
+        Authorization: this.userService.getToken()
+      })
     });
   }
 }
