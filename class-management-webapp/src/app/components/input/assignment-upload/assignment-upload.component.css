@@ -75,3 +75,17 @@ input[type="file"] {
   margin-left: 5px;
   font-family: Monaco, "Lucida Console", monospace;
 }
+
+.expiry-message {
+  margin-top: 10px;
+  height: fit-content;
+  min-height: 40px;
+  border: 1px solid darkred;
+  background-color: indianred;
+  font-family: Monaco, "Lucida Console", monospace;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 5px;
+  padding: 10px 15px;
+}

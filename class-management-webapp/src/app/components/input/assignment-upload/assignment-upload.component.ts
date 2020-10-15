@@ -65,4 +65,8 @@ export class AssignmentUploadComponent implements OnInit {
     });
     this.filename = undefined;
   }
+
+  checkDueDate(): boolean {
+    return new Date(this.assignment.dueDate).getTime() < new Date().getTime();
+  }
 }

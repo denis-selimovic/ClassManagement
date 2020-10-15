@@ -8,8 +8,11 @@
       </button>
     </div>
     <div class="custom-file-buttons">
-      <button type="submit" [disabled]="uploadForm.invalid" class="btn submit">Upload</button>
+      <button type="submit" [disabled]="uploadForm.invalid || checkDueDate()" class="btn submit">Upload</button>
       <button (click)="hideComponent()" class="btn cancel">Exit</button>
+    </div>
+    <div class="expiry-message" *ngIf="checkDueDate()">
+      Assignment due date has expired
     </div>
   </form>
 </div>
