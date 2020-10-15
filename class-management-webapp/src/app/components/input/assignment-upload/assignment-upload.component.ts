@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Assignment } from '../../../services/course/course.service';
 import { HttpClient } from '@angular/common/http';
 import { AssignmentService } from '../../../services/assignment/assignment.service';
@@ -16,9 +16,13 @@ export class AssignmentUploadComponent implements OnInit {
 
   uploadForm: FormGroup;
 
-  constructor(private http: HttpClient, private assignmentService: AssignmentService, private formBuilder: FormBuilder) {
+  private type: string = undefined;
+  private filename: string = undefined;
+
+  constructor(private http: HttpClient, private assignmentService: AssignmentService,
+              private formBuilder: FormBuilder, private cd: ChangeDetectorRef) {
     this.uploadForm = this.formBuilder.group({
-      file: ['', Validators.required]
+      file: [null, Validators.required]
     });
   }
 
@@ -26,14 +30,32 @@ export class AssignmentUploadComponent implements OnInit {
   }
 
   hideComponent(): void {
+    this.filename = undefined;
+    this.type = undefined;
     this.hide.emit();
   }
 
   upload(): void {
     const formData = new FormData();
-    formData.append('file', this.uploadForm.get('file').value);
+    const blob = new Blob([ this.uploadForm.get('file').value ], { type: this.type });
+    formData.append('file', blob, this.filename);
     this.assignmentService.upload(this.assignment._id, formData).subscribe(result => {
-      console.log(result);
     });
+  }
+
+  onFileChange($event: any): void {
+    const reader = new FileReader();
+    if ($event.target.files && $event.target.files.length) {
+      const [ file ] = $event.target.files;
+      this.type = file.type;
+      this.filename = file.name;
+      reader.readAsArrayBuffer(file);
+      reader.onload = () => {
+        this.uploadForm.patchValue({
+          file: reader.result
+        });
+        this.cd.markForCheck();
+      };
+    }
   }
 }

@@ -44,7 +44,6 @@ export class AssignmentService {
   upload(id: string, formData: FormData): any {
     return this.http.post('http://localhost:3000/assignments/' + id + '/upload', formData, {
       headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
         Authorization: this.userService.getToken()
       })
     });
