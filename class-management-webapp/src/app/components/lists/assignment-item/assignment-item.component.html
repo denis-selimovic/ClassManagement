@@ -19,7 +19,7 @@
       <ngb-panel id="upload">
         <ng-template ngbPanelHeader>
           <a href (click)="toggle($event, a, 'upload')" class="upload-header">My uploads</a>
-          <button class="upload-btn">Upload</button>
+          <button class="upload-btn" (click)="openUploadForm()">Upload</button>
         </ng-template>
         <ng-template ngbPanelContent>
           <div (click)="downloadUpload(upload.key)" class="download-link" *ngFor="let upload of uploads | keyvalue">

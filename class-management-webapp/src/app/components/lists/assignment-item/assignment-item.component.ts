@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Assignment, Course, Upload } from '../../../services/course/course.service';
-import {NgbAccordion, NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordion, NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { AssignmentService } from '../../../services/assignment/assignment.service';
 import { saveAs } from 'file-saver';
-import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-assignment-item',
@@ -14,6 +13,8 @@ export class AssignmentItemComponent implements OnInit {
 
   @Input() assignment: Assignment;
   @Input() course: Course;
+
+  @Output() upload = new EventEmitter<Assignment>();
 
   setup: Upload;
   uploads = {};
@@ -56,5 +57,9 @@ export class AssignmentItemComponent implements OnInit {
   toggle($event: MouseEvent, a: NgbAccordion, panel: string): void {
     $event.preventDefault();
     (a.isExpanded(panel)) ? a.collapse(panel) : a.expand(panel);
+  }
+
+  openUploadForm(): void {
+    this.upload.emit(this.assignment);
   }
 }
