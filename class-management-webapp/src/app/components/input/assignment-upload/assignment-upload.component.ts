@@ -17,7 +17,7 @@ export class AssignmentUploadComponent implements OnInit {
   uploadForm: FormGroup;
 
   private type: string = undefined;
-  private filename: string = undefined;
+  filename: string = undefined;
 
   constructor(private http: HttpClient, private assignmentService: AssignmentService,
               private formBuilder: FormBuilder, private cd: ChangeDetectorRef) {
@@ -57,5 +57,12 @@ export class AssignmentUploadComponent implements OnInit {
         this.cd.markForCheck();
       };
     }
+  }
+
+  clearForm(): void {
+    this.uploadForm.setValue({
+      file: null
+    });
+    this.filename = undefined;
   }
 }

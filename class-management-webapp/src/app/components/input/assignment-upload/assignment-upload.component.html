@@ -1,4 +1,15 @@
-<form [formGroup]="uploadForm" (ngSubmit)="upload()">
-  <input type="file" formGroupName="file" name="file" (change)="onFileChange($event)" />
-  <button type="submit" [disabled]="uploadForm.invalid">Upload</button>
-</form>
+<div class="upload-form-container">
+  <form [formGroup]="uploadForm" (ngSubmit)="upload()" class="upload-form">
+    <div class="custom-file-flex">
+      <label for="file" class="custom-file-upload">{{!filename ? 'Please upload a file' : filename}}</label>
+      <input id="file" type="file" formGroupName="file" name="file" (change)="onFileChange($event)" />
+      <button class="custom-file-cancel" (click)="clearForm()" [disabled]="!filename">
+        <img alt="cancel" src="assets/cancel.png"/>
+      </button>
+    </div>
+    <div class="custom-file-buttons">
+      <button type="submit" [disabled]="uploadForm.invalid" class="btn submit">Upload</button>
+      <button (click)="hideComponent()" class="btn cancel">Exit</button>
+    </div>
+  </form>
+</div>

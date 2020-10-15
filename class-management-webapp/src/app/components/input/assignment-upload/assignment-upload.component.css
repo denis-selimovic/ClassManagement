@@ -1,0 +1,77 @@
+.upload-form-container {
+  margin-left: 40px;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  width: 400px;
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 16px;
+  height: 40px;
+  color: gray;
+  margin-right: 10px;
+}
+
+.custom-file-cancel {
+  height: 40px;
+  border: none;
+  min-width: 40px;
+  background-color: white;
+  display: inline-block;
+  outline: none;
+}
+
+.custom-file-cancel > img {
+  max-height: 30px;
+  max-width: 30px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.custom-file-flex {
+  display: flex;
+}
+
+.custom-file-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  height: 40px;
+  width: 80px;
+  text-align: center;
+}
+
+.submit {
+  border: 1px dodgerblue solid;
+  background-color: dodgerblue;
+  color: white;
+  font-family: Monaco, "Lucida Console", monospace;
+  margin-right: 5px;
+}
+
+.cancel {
+  border: 1px indianred solid;
+  background-color: indianred;
+  color: white;
+  margin-left: 5px;
+  font-family: Monaco, "Lucida Console", monospace;
+}
