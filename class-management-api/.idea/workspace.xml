@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b26d4bb1-4e9e-4bcb-9ff8-ce50b6b9bf83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-grid-item/course-grid-item.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-grid-item/course-grid-item.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-grid-item/course-grid-item.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/components/lists/course-grid-item/course-grid-item.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-management-webapp/src/app/services/course/course.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../class-management-webapp/src/app/services/course/course.service.ts" afterDir="false" />
-    </list>
+    <list default="true" id="b26d4bb1-4e9e-4bcb-9ff8-ce50b6b9bf83" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +92,7 @@
       <workItem from="1602778544831" duration="7512000" />
       <workItem from="1602791054173" duration="982000" />
       <workItem from="1602792281991" duration="131000" />
-      <workItem from="1602794534558" duration="535000" />
+      <workItem from="1602794534558" duration="978000" />
     </task>
     <servers />
   </component>
