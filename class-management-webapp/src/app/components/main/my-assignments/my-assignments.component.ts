@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentRef, ComponentFactoryResolver } from '@angular/core';
 import { AssignmentService } from '../../../services/assignment/assignment.service';
 import { Assignment } from '../../../services/course/course.service';
+import { AssignmentUploadComponent } from '../../input/assignment-upload/assignment-upload.component';
 
 @Component({
   selector: 'app-my-assignments',
@@ -9,10 +10,13 @@ import { Assignment } from '../../../services/course/course.service';
 })
 export class MyAssignmentsComponent implements OnInit {
 
+  assignmentUploadRef: ComponentRef<AssignmentUploadComponent>;
+  @ViewChild('assignmentUpload', { read: ViewContainerRef }) assignmentUpload: ViewContainerRef;
+
   courses: any = {};
   assignments: Array<Assignment> = [];
 
-  constructor(private assignmentService: AssignmentService) { }
+  constructor(private assignmentService: AssignmentService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
     this.assignmentService.loadMyAssignments().subscribe(courses => {
@@ -23,4 +27,20 @@ export class MyAssignmentsComponent implements OnInit {
     });
   }
 
+  showUploadForm($event: Assignment): any {
+    if (!this.assignmentUploadRef) {
+      const uploadComponent = this.componentFactoryResolver.resolveComponentFactory(AssignmentUploadComponent);
+      this.assignmentUploadRef = this.assignmentUpload.createComponent(uploadComponent);
+    }
+    this.assignmentUploadRef.instance.assignment = $event;
+    this.assignmentUploadRef.instance.hide.subscribe(() => this.hideUploadForm());
+    this.assignmentUploadRef.changeDetectorRef.detectChanges();
+  }
+
+  hideUploadForm(): any {
+    if (this.assignmentUploadRef) {
+      this.assignmentUploadRef.destroy();
+      delete this.assignmentUploadRef;
+    }
+  }
 }

@@ -1,10 +1,10 @@
 <div class="grid">
   <div class="assignments">
     <ng-container *ngFor="let assignment of assignments">
-      <app-assignment-item [assignment]="assignment" [course]="courses[assignment.courseId]"></app-assignment-item>
+      <app-assignment-item [assignment]="assignment" [course]="courses[assignment.courseId]" (upload)="showUploadForm($event)"></app-assignment-item>
     </ng-container>
   </div>
   <div class="upload-grid">
-
+    <ng-template #assignmentUpload></ng-template>
   </div>
 </div>
