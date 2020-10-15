@@ -28,6 +28,7 @@ import { CoursesComponent } from './components/main/courses/courses.component';
 import { CourseGridItemComponent } from './components/lists/course-grid-item/course-grid-item.component';
 import { AssignmentService } from './services/assignment/assignment.service';
 import { AssignmentItemComponent } from './components/lists/assignment-item/assignment-item.component';
+import { AssignmentUploadComponent } from './components/input/assignment-upload/assignment-upload.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     MyAssignmentsComponent,
     CoursesComponent,
     CourseGridItemComponent,
-    AssignmentItemComponent
+    AssignmentItemComponent,
+    AssignmentUploadComponent
   ],
   imports: [
     BrowserModule,

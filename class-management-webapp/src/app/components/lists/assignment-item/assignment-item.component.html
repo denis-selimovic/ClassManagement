@@ -6,14 +6,21 @@
   </div>
   <div class="accordion">
     <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
-      <ngb-panel title="Setup" id="setup">
+      <ngb-panel id="setup">
+        <ng-template ngbPanelHeader>
+          <a href class="upload-header" (click)="toggle($event, a, 'setup')">Setup</a>
+        </ng-template>
         <ng-template ngbPanelContent>
           <div (click)="downloadSetup()" class="download-link">
             {{setup?.name}}
           </div>
         </ng-template>
       </ngb-panel>
-      <ngb-panel title="Uploads" id="upload">
+      <ngb-panel id="upload">
+        <ng-template ngbPanelHeader>
+          <a href (click)="toggle($event, a, 'upload')" class="upload-header">My uploads</a>
+          <button class="upload-btn">Upload</button>
+        </ng-template>
         <ng-template ngbPanelContent>
           <div (click)="downloadUpload(upload.key)" class="download-link" *ngFor="let upload of uploads | keyvalue">
             {{upload?.value?.name}}

@@ -99,7 +99,6 @@ router.get('/:id/uploads', auth, async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
         const uploads = assignment.uploads.filter(upload => upload.uploadedBy.toString() === req.user._id.toString());
-        console.log(uploads);
         const formattedUploads = uploads.map(upload => {
             const { _id, name, mimetype, owner, uploadedBy } = upload;
             return { _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') };
