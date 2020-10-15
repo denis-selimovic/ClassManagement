@@ -72,10 +72,9 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
         if (!userCourses.map(c => c._id.toString()).includes(assignmentCourse._id.toString())) {
             return res.status(400).json({ message: 'Unable to upload item. Not enrolled to course' });
         }
-        /*if (assignment.dueDate.getTime() < new Date().getTime()) {
+        if (assignment.dueDate.getTime() < new Date().getTime()) {
             return res.status(400).json({ message: 'Time for upload expired' });
-        }*/
-        //await Upload.deleteMany({ uploadedBy: req.user._id, owner: assignment._id.toString() });
+        }
         const upload = await Upload.createUpload(req.file, assignment._id.toString(), req.user._id);
         assignment.uploads.push(upload);
         await assignment.save();
