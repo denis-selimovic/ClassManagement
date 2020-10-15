@@ -73,8 +73,8 @@ router.post('/leave/:id', auth, checkRoles([ROLE_USER]), async (req, res) => {
     try {
         const course = await Course.getCourseByIdAndPopulate(req.params.id, 'students');
         const user = req.user;
-        if (course.students.map(s => s._id).includes(user._id)) {
-            return res.status(400).json({ message: 'User already enrolled' });
+        if (!course.students.map(s => s._id.toString()).includes(user._id.toString())) {
+            return res.status(400).json({ message: 'User not enrolled' });
         }
         course.students = course.students.filter(s => s._id.toString() !== user._id.toString());
         await course.save();

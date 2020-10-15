@@ -59,6 +59,22 @@ export class CourseService {
     });
   }
 
+  enroll(id: string): any {
+    return this.http.post('http://localhost:3000/courses/enroll/' + id, {}, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
+  withdraw(id: string): any {
+    return this.http.post('http://localhost:3000/courses/leave/' + id, {}, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
   isEnrolled(course: Course): boolean {
     return course.students.includes(this.userService.getUser()._id);
   }

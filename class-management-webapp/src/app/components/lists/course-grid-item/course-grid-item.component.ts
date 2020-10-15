@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Course} from '../../../services/course/course.service';
+import {Course, CourseService} from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-course-grid-item',
@@ -11,7 +11,7 @@ export class CourseGridItemComponent implements OnInit {
   @Input() course: Course;
   @Input() button: boolean;
 
-  constructor() { }
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
   }
@@ -21,5 +21,19 @@ export class CourseGridItemComponent implements OnInit {
       return 0;
     }
     return this.course.rating.total / this.course.rating.count;
+  }
+
+  enroll(): void {
+    this.courseService.enroll(this.course._id).subscribe(course => {
+      this.button = !this.button;
+    }, error => {
+    });
+  }
+
+  withdraw(): void {
+    this.courseService.withdraw(this.course._id).subscribe(course => {
+      this.button = !this.button;
+    }, error => {
+    });
   }
 }
