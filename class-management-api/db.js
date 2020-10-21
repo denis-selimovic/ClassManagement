@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { getDatabaseUri } = require('./common/config')
 
-mongoose.connect('mongodb://localhost/cm-api-db', {
+mongoose.connect(getDatabaseUri(), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
