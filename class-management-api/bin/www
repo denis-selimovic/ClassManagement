@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+require('dotenv').config()
 const app = require('../app');
 const db = require('../db');
 const debug = require('debug')('class-management-api:server');
