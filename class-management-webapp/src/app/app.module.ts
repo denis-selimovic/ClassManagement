@@ -33,6 +33,9 @@ import { CreateCourseComponent } from './components/input/create-course/create-c
 import { CreatedCoursesComponent } from './components/lists/created-courses/created-courses.component';
 import { CourseDashboardComponent } from './components/dashboard/course-dashboard/course-dashboard.component';
 import { CourseMainMenuComponent } from './components/menus/course-main-menu/course-main-menu.component';
+import { LessonsComponent } from './components/main/lessons/lessons.component';
+import { AssignmentsComponent } from './components/main/assignments/assignments.component';
+import { StudentsComponent } from './components/main/students/students.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -46,6 +49,9 @@ const appRoutes: Routes = [
       { path: 'created-courses', component: CreatedCoursesComponent }
     ]},
   { path: 'courses/:id', component: CourseDashboardComponent, children: [
+      { path: 'lessons', component: LessonsComponent },
+      { path: 'students', component: StudentsComponent },
+      { path: 'assignments', component: AssignmentsComponent }
     ]}
 ];
 
@@ -73,7 +79,10 @@ const appRoutes: Routes = [
     CreateCourseComponent,
     CreatedCoursesComponent,
     CourseDashboardComponent,
-    CourseMainMenuComponent
+    CourseMainMenuComponent,
+    LessonsComponent,
+    AssignmentsComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
