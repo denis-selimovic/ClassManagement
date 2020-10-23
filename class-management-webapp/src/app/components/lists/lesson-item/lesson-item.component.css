@@ -1,5 +1,6 @@
 .lesson {
-  height: 170px;
+  min-height: 170px;
+  height: fit-content;
   width: 350px;
   display: flex;
   flex-direction: column;
