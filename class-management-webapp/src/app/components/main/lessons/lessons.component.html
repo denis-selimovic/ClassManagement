@@ -5,6 +5,6 @@
     </div>
   </div>
   <div class="forms" *ngIf="checkOwnership()">
-    <app-create-lesson></app-create-lesson>
+    <app-create-lesson [id]="course._id" (created)="addLesson($event)"></app-create-lesson>
   </div>
 </div>

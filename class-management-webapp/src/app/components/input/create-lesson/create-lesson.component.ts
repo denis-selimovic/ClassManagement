@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LessonService} from '../../../services/lesson/lesson.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-create-lesson',
@@ -8,10 +10,13 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class CreateLessonComponent implements OnInit {
   form: FormGroup;
-  failed: false;
+  failed = false;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form= this.formBuilder.group({
+  @Input() id: any;
+  @Output() created: EventEmitter<any> = new EventEmitter();
+
+  constructor(private formBuilder: FormBuilder, private lessonService: LessonService) {
+    this.form = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
     });
@@ -21,6 +26,8 @@ export class CreateLessonComponent implements OnInit {
   }
 
   createLesson(): void {
-
+    this.lessonService.create(this.id, this.form.get('name').value, this.form.get('description').value).subscribe(data => {
+      this.created.emit(data);
+    }, error => this.failed = false);
   }
 }

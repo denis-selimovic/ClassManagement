@@ -136,7 +136,7 @@ router.post('/:id/lesson', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
         await lesson.save();
         course.lessons.push(lesson);
         await course.save();
-        res.status(201).json(course);
+        res.status(201).json(lesson);
     } catch (e) {
         res.status(400).json({ message: 'Unable to load item' });
     }
@@ -162,7 +162,7 @@ router.post('/:id/assignment', auth, checkRoles([ROLE_TUTOR]), upload.single('fi
         await assignment.save();
         course.assignments.push(assignment);
         await course.save();
-        res.status(201).json(course);
+        res.status(201).json(assignment);
     } catch (e) {
         console.log(e.message);
         res.status(400).json({ message: 'Unable to load item' });

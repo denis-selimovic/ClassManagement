@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Course} from '../../../services/course/course.service';
 import {UserService} from '../../../services/user/user.service';
+import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-lessons',
@@ -22,5 +23,9 @@ export class LessonsComponent implements OnInit {
 
   checkOwnership(): boolean {
     return this.course.owner === this.userService.getUser()._id;
+  }
+
+  addLesson($event: any): void {
+    this.course.lessons = [...this.course.lessons, $event];
   }
 }

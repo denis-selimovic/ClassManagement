@@ -1,19 +1,19 @@
 <div class="container">
   <form class="form" [formGroup]="form" (ngSubmit)="createLesson()">
     <div class="input-field">
-      <input formControlName="name" name="name" placeholder="Course name" class="input"/>
+      <input formControlName="name" name="name" placeholder="Lesson name" class="input"/>
       <div class="error" *ngIf="form.get('name').touched && form.get('name').invalid">
         Name is required
       </div>
     </div>
     <div class="input-field">
-      <textarea formControlName="description" name="description" placeholder="Course description" class="text-input"></textarea>
+      <textarea formControlName="description" name="description" placeholder="Lesson description" class="text-input"></textarea>
       <div class="error" *ngIf="form.get('description').touched && form.get('description').invalid">
         Description is required
       </div>
     </div>
     <div class="input-field">
-      <input class="submit" value="Create course" type="submit" [disabled]="form.invalid"/>
+      <input class="submit" value="Create lesson" type="submit" [disabled]="form.invalid"/>
       <div class="error" *ngIf="failed">
         Lesson could not be created
       </div>
