@@ -38,6 +38,7 @@ import { AssignmentsComponent } from './components/main/assignments/assignments.
 import { StudentsComponent } from './components/main/students/students.component';
 import { LessonItemComponent } from './components/lists/lesson-item/lesson-item.component';
 import { CreateLessonComponent } from './components/input/create-lesson/create-lesson.component';
+import {LessonService} from './services/lesson/lesson.service';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -100,6 +101,7 @@ const appRoutes: Routes = [
     UserService,
     CourseService,
     AssignmentService,
+    LessonService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]
