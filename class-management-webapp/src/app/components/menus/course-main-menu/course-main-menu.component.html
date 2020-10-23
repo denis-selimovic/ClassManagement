@@ -6,7 +6,7 @@
     <ngb-rating [rate]="getRating()" class="rating" readonly="true" max="5"></ngb-rating>
     <div class="tutor" *ngIf="tutor">Tutor: {{tutor}}</div>
   </div>
-  <a class="item link button" routerLink="lessons">Lessons</a>
-  <a class="item link button" routerLink="assignments">Assignments</a>
-  <a class="item link button" routerLink="students">Students</a>
+  <div class="item link button" (click)="navigate('lessons')">Lessons</div>
+  <div class="item link button" (click)="navigate('assignments')">Assignments</div>
+  <div class="item link button" (click)="navigate('students')">Students</div>
 </div>
