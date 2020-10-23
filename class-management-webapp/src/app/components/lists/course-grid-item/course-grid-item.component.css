@@ -11,6 +11,11 @@
   max-height: 40px;
 }
 
+.course-name:hover {
+  cursor: pointer;
+  color: lightgray;
+}
+
 .course-desc {
   font-size: 14px;
   min-height: 50px;
