@@ -3,7 +3,7 @@
     <app-user-header></app-user-header>
   </ng-container>
   <ng-container slot="lsidebar">
-    <app-course-main-menu></app-course-main-menu>
+    <app-course-main-menu [course]="course" *ngIf="course"></app-course-main-menu>
   </ng-container>
   <ng-container slot="main">
     <router-outlet></router-outlet>

@@ -68,6 +68,14 @@ export class CourseService {
     });
   }
 
+  loadCourseById(id: string): any {
+    return this.http.get(`${environment.api}/courses/${id}`, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
   enroll(id: string): any {
     return this.http.post(`${environment.api}/courses/enroll/${id}`, {}, {
       headers: {
