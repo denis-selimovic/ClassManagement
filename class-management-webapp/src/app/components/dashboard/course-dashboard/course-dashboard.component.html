@@ -1,0 +1,14 @@
+<app-navbar>
+  <ng-container slot="header">
+    <app-user-header></app-user-header>
+  </ng-container>
+  <ng-container slot="lsidebar">
+    <app-course-main-menu></app-course-main-menu>
+  </ng-container>
+  <ng-container slot="main">
+    <router-outlet></router-outlet>
+  </ng-container>
+  <ng-container slot="footer">
+    <app-guest-footer></app-guest-footer>
+  </ng-container>
+</app-navbar>

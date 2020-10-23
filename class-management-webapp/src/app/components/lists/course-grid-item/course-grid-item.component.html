@@ -1,5 +1,5 @@
 <div class="course-card">
-  <div class="course-name">{{course.name}}</div>
+  <div class="course-name" [routerLink]="getRoute()" >{{course.name}}</div>
   <div class="course-desc">{{course.description}}</div>
   <div class="course-info">
     <div class="course-students">x students enrolled</div>

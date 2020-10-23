@@ -45,4 +45,8 @@ export class CourseGridItemComponent implements OnInit {
   checkWithdraw(): boolean {
     return !this.button || this.course.owner === this.userService.getUser()._id;
   }
+
+  getRoute(): string {
+    return `/courses/${this.course._id}`;
+  }
 }
