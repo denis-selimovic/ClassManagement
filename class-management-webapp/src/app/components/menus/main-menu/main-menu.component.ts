@@ -21,4 +21,10 @@ export class MainMenuComponent implements OnInit {
   isTutor(): boolean {
     return this.userService.isTutor();
   }
+
+  tutor(): any {
+    this.userService.tutor().subscribe(data => {
+      this.userService.setUser(data, null);
+    });
+  }
 }

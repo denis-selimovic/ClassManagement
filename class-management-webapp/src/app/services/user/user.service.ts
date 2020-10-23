@@ -33,11 +33,22 @@ export class UserService {
     return this.http.post(`${environment.api}/users/auth/register`, { username, password, name, surname, email });
   }
 
+  tutor(): any {
+    return this.http.post(`${environment.api}/users/tutor`, {}, {
+      headers: {
+        Authorization: this.getToken()
+      }
+    });
+  }
+
   setUser(userData, token): void {
     const { _id, username, name, surname, email } = userData;
     const roles: Role[] = userData.roles.map(r => {
       return { role: r.role };
     });
+    if (!token) {
+      token = this.getToken();
+    }
     this.user = { _id, username, name, surname, email, token, roles };
   }
 
