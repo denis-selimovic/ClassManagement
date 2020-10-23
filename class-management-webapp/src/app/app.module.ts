@@ -32,7 +32,7 @@ import { AssignmentUploadComponent } from './components/input/assignment-upload/
 import { CreateCourseComponent } from './components/input/create-course/create-course.component';
 import { CreatedCoursesComponent } from './components/lists/created-courses/created-courses.component';
 import { CourseDashboardComponent } from './components/dashboard/course-dashboard/course-dashboard.component';
-import { CourseMainMenuComponent } from './components/menu/course-main-menu/course-main-menu.component';
+import { CourseMainMenuComponent } from './components/menus/course-main-menu/course-main-menu.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
