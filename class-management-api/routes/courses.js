@@ -105,7 +105,7 @@ router.get('/:id/students', auth, async (req, res) => {
 
 router.get('/:id/assignments', auth, async (req, res) => {
     try {
-        const course = await Course.getCourseByIdAndPopulate(req.params.id, 'assignments');
+        const course = await Course.getCourseByIdAndPopulate(req.params.id, { path: 'assignments', populate: { path: 'uploads', model: 'Upload' } });
         res.status(200).json(course.assignments);
     } catch (e) {
         res.status(400).json({ message: 'Could not load item'});
