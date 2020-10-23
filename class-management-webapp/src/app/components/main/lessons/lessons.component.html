@@ -1,1 +1,7 @@
-<p>lessons works!</p>
+<div class="grid">
+  <div class="lessons">
+    <div class="lesson" *ngFor="let lesson of course.lessons">
+      <app-lesson-item [lesson]="lesson"></app-lesson-item>
+    </div>
+  </div>
+</div>
