@@ -60,6 +60,14 @@ export class CourseService {
     });
   }
 
+  loadCreatedCourses(): any {
+    return this.http.get(`${environment.api}/users/created-courses`, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
   enroll(id: string): any {
     return this.http.post(`${environment.api}/courses/enroll/${id}`, {}, {
       headers: {

@@ -58,6 +58,11 @@ userSchema.methods.courses = async function () {
     return await Course.find({students: {$elemMatch: {$eq: {_id: this._id}}}});
 }
 
+userSchema.methods.createdCourses = async function () {
+    const Course = this.model('Course');
+    return await Course.find({ owner: this._id });
+}
+
 userSchema.methods.coursesWithAssignments = async function () {
     const Course = this.model('Course');
     return await Course.find({ students: { $elemMatch: { $eq: { _id: this._id } } } }).populate('assignments');

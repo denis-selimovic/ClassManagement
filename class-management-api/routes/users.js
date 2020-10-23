@@ -52,6 +52,11 @@ router.get('/my-assignments', auth, async (req, res) => {
     res.json(courses);
 });
 
+router.get('/created-courses', auth, checkRoles([ROLE_TUTOR]), async (req, res) => {
+    const courses = await req.user.createdCourses();
+    res.json(courses);
+});
+
 module.exports = router;
 
 
