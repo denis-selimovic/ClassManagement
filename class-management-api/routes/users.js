@@ -57,6 +57,15 @@ router.get('/created-courses', auth, checkRoles([ROLE_TUTOR]), async (req, res) 
     res.json(courses);
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.status(200).json({ tutor: `${user.name} ${user.surname}` });
+    } catch (e) {
+        res.status(401).json({ message: 'Could not load item' });
+    }
+});
+
 module.exports = router;
 
 

@@ -1,1 +1,12 @@
-<p>course-main-menu works!</p>
+<div class="menu">
+  <div class="item profile">
+    <div class="name">{{course.name}}</div>
+    <div class="info">{{course?.students?.length}} students</div>
+    <div class="info">{{course?.lessons?.length}} lessons</div>
+    <ngb-rating [rate]="getRating()" class="rating" readonly="true" max="5"></ngb-rating>
+    <div class="tutor" *ngIf="tutor">Tutor: {{tutor}}</div>
+  </div>
+  <a class="item link button" routerLink="lessons">Lessons</a>
+  <a class="item link button" routerLink="assignments">Assignments</a>
+  <a class="item link button" routerLink="students">Students</a>
+</div>

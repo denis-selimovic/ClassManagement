@@ -35,6 +35,7 @@ export interface Course {
   rating: Rating;
   students: any;
   assignments: any;
+  lessons: any;
 }
 
 @Injectable({

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Course} from '../../../services/course/course.service';
+import {UserService} from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-course-main-menu',
@@ -9,11 +10,20 @@ import {Course} from '../../../services/course/course.service';
 export class CourseMainMenuComponent implements OnInit {
 
   @Input() course: Course;
+  tutor: string;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log(this.course);
+    this.userService.loadById(this.course.owner).subscribe(data => {
+      this.tutor = data.tutor;
+    });
   }
 
+  getRating(): number {
+    if (this.course.rating.count === 0) {
+      return 0;
+    }
+    return this.course.rating.total / this.course.rating.count;
+  }
 }

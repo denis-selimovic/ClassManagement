@@ -70,4 +70,8 @@ export class UserService {
   isTutor(): boolean {
     return this.user.roles.map(r => r.role).includes('ROLE_TUTOR');
   }
+
+  loadById(owner: string): any {
+    return this.http.get(`${environment.api}/users/${owner}`);
+  }
 }
