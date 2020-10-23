@@ -9,7 +9,7 @@
     <ngb-rating [rate]="getRating()" max="5" [readonly]="!button"></ngb-rating>
   </div>
   <div class="course-options">
-    <button class="enroll" [disabled]="button" (click)="enroll()">Enroll</button>
-    <button class="withdraw" [disabled]="!button" (click)="withdraw()">Withdraw</button>
+    <button class="enroll" [disabled]="checkEnrolled()" (click)="enroll()">Enroll</button>
+    <button class="withdraw" [disabled]="checkWithdraw()" (click)="withdraw()">Withdraw</button>
   </div>
 </div>

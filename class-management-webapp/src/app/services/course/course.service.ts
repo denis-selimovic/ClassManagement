@@ -76,6 +76,14 @@ export class CourseService {
     });
   }
 
+  create(name: string, description: string): any {
+    return this.http.post(`${environment.api}/courses/create`, { name, description }, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
   isEnrolled(course: Course): boolean {
     return course.students.includes(this.userService.getUser()._id);
   }

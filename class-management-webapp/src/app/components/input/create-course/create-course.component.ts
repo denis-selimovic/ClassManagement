@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {CourseService} from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-create-course',
@@ -9,8 +10,9 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 export class CreateCourseComponent implements OnInit {
 
   courseForm: FormGroup;
+  failedCreation = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private courseService: CourseService) {
     this.courseForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
@@ -21,6 +23,8 @@ export class CreateCourseComponent implements OnInit {
   }
 
   createCourse(): void {
-
+    this.courseService.create(this.courseForm.get('name').value, this.courseForm.get('description').value).subscribe(data => {
+      this.courseForm.reset();
+    }).error(error => this.failedCreation = true);
   }
 }

@@ -14,6 +14,9 @@
     </div>
     <div class="input-field">
       <input class="submit" value="Create course" type="submit" [disabled]="courseForm.invalid"/>
+      <div class="error" *ngIf="failedCreation">
+        Course could not be created
+      </div>
     </div>
   </form>
 </div>
