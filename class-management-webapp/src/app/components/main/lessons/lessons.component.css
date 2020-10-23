@@ -21,8 +21,18 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: start;
 }
 
 .lesson {
   margin-bottom: 15px;
+}
+
+.form {
+  align-self: center;
+  margin-bottom: 40px;
+}
+
+.upload {
+  margin-top: 20px;
 }

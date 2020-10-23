@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="forms" *ngIf="checkOwnership()">
-    <app-create-lesson [id]="course._id" (created)="addLesson($event)"></app-create-lesson>
-    <ng-template #upload></ng-template>
+    <app-create-lesson class="form" [id]="course._id" (created)="addLesson($event)"></app-create-lesson>
+    <ng-template #upload class="upload"></ng-template>
   </div>
 </div>

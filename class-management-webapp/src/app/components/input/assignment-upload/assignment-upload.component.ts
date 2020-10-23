@@ -66,7 +66,7 @@ export class AssignmentUploadComponent implements OnInit {
 
   checkDueDate(): boolean {
     if (!this.entity.dueDate) {
-      return true;
+      return false;
     }
     return new Date(this.entity.dueDate).getTime() < new Date().getTime();
   }
