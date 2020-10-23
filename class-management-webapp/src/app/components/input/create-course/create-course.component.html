@@ -1,1 +1,19 @@
-<p>create-course works!</p>
+<div class="container">
+  <form class="form" [formGroup]="courseForm" (ngSubmit)="createCourse()">
+    <div class="input-field">
+      <input formControlName="name" name="name" placeholder="Course name" class="input"/>
+      <div class="error" *ngIf="courseForm.get('name').touched && courseForm.get('name').invalid">
+        Name is required
+      </div>
+    </div>
+    <div class="input-field">
+      <textarea formControlName="description" name="description" placeholder="Course description" class="text-input"></textarea>
+      <div class="error" *ngIf="courseForm.get('description').touched && courseForm.get('description').invalid">
+        Description is required
+      </div>
+    </div>
+    <div class="input-field">
+      <input class="submit" value="Create course" type="submit" [disabled]="courseForm.invalid"/>
+    </div>
+  </form>
+</div>
