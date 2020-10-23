@@ -18,6 +18,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.assignmentService.loadCourseAssignments(this.course._id).subscribe(assignments => this.assignments = assignments);
   }
 
   checkOwnership(): boolean {

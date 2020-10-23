@@ -18,6 +18,14 @@ export class AssignmentService {
     });
   }
 
+  loadCourseAssignments(id: string): any {
+    return this.http.get(`${environment.api}/courses/${id}/assignments`, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
   loadSetup(id: string): any {
     return this.http.get(`${environment.api}/assignments/${id}/setup`, {
       headers: {
