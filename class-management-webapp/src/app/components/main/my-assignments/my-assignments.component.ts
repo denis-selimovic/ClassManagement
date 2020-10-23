@@ -27,17 +27,13 @@ export class MyAssignmentsComponent implements OnInit {
     });
   }
 
-  upload(id, formData): void {
-    this.assignmentService.upload(id, formData).subscribe(results => {});
-  }
-
   showUploadForm($event: Assignment): any {
     if (!this.assignmentUploadRef) {
       const uploadComponent = this.componentFactoryResolver.resolveComponentFactory(AssignmentUploadComponent);
       this.assignmentUploadRef = this.assignmentUpload.createComponent(uploadComponent);
     }
     this.assignmentUploadRef.instance.entity = $event;
-    this.assignmentUploadRef.instance.uploadCallback = this.upload;
+    this.assignmentUploadRef.instance.entityType = 0;
     this.assignmentUploadRef.instance.hide.subscribe(() => this.hideUploadForm());
     this.assignmentUploadRef.changeDetectorRef.detectChanges();
   }

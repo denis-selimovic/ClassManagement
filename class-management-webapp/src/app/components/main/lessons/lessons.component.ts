@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Course} from '../../../services/course/course.service';
 import {UserService} from '../../../services/user/user.service';
 import {AssignmentUploadComponent} from '../../input/assignment-upload/assignment-upload.component';
+import {LessonService} from '../../../services/lesson/lesson.service';
 
 @Component({
   selector: 'app-lessons',
@@ -17,7 +18,8 @@ export class LessonsComponent implements OnInit {
   course: Course;
   id: any;
 
-  constructor(private router: Router, private userService: UserService, private factory: ComponentFactoryResolver) {
+  constructor(private router: Router, private userService: UserService,
+              private factory: ComponentFactoryResolver) {
     this.course = this.router.getCurrentNavigation().extras.state.course;
   }
 
@@ -32,9 +34,6 @@ export class LessonsComponent implements OnInit {
     this.course.lessons = [...this.course.lessons, $event];
   }
 
-  uploadCallback(id, formData): void {
-
-  }
 
   showUploadForm($event: any): void {
     if (!this.uploadRef) {
@@ -42,7 +41,7 @@ export class LessonsComponent implements OnInit {
       this.uploadRef = this.upload.createComponent(uploadComponent);
     }
     this.uploadRef.instance.entity = $event;
-    this.uploadRef.instance.uploadCallback = this.uploadCallback;
+    this.uploadRef.instance.entityType = 1;
     this.uploadRef.instance.hide.subscribe(() => this.hideUploadForm());
     this.uploadRef.changeDetectorRef.detectChanges();
   }

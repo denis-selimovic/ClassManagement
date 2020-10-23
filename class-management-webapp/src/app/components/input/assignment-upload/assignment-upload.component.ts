@@ -2,6 +2,8 @@ import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from 
 import { Assignment } from '../../../services/course/course.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {AssignmentService} from '../../../services/assignment/assignment.service';
+import {LessonService} from '../../../services/lesson/lesson.service';
 
 @Component({
   selector: 'app-assignment-upload',
@@ -11,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AssignmentUploadComponent implements OnInit {
 
   @Input() entity: any;
-  @Input() uploadCallback: any;
+  @Input() entityType: any;
   @Output() hide = new EventEmitter<null>();
 
   uploadForm: FormGroup;
@@ -19,7 +21,8 @@ export class AssignmentUploadComponent implements OnInit {
   private type: string = undefined;
   filename: string = undefined;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private cd: ChangeDetectorRef) {
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private cd: ChangeDetectorRef,
+              private assignmentService: AssignmentService, private lessonService: LessonService) {
     this.uploadForm = this.formBuilder.group({
       file: [null, Validators.required]
     });
@@ -38,7 +41,14 @@ export class AssignmentUploadComponent implements OnInit {
     const formData = new FormData();
     const blob = new Blob([ this.uploadForm.get('file').value ], { type: this.type });
     formData.append('file', blob, this.filename);
-    this.uploadCallback(this.entity._id, formData);
+    switch (this.entityType) {
+      case 0:
+        return this.assignmentService.upload(this.entity._id, formData).subscribe(results => {});
+      case 1:
+        return this.lessonService.upload(this.entity._id, formData).subscribe(results => {});
+      default:
+        break;
+    }
   }
 
   onFileChange($event: any): void {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserService} from '../user/user.service';
 import {environment} from '../../../environments/environment';
 
@@ -23,6 +23,14 @@ export class LessonService {
       headers: {
         Authorization: this.userService.getToken()
       }
+    });
+  }
+
+  upload(id, formData): any {
+    return this.http.post(`${environment.api}/lessons/${id}/upload`, formData, {
+      headers: new HttpHeaders({
+        Authorization: this.userService.getToken()
+      })
     });
   }
 }
