@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { UserService } from '../user/user.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AssignmentService {
   constructor(private http: HttpClient, private userService: UserService) { }
 
   loadMyAssignments(): any {
-    return this.http.get('http://localhost:3000/users/my-assignments', {
+    return this.http.get(`${environment.api}/users/my-assignments`, {
       headers: {
         Authorization: this.userService.getToken()
       }
@@ -18,7 +19,7 @@ export class AssignmentService {
   }
 
   loadSetup(id: string): any {
-    return this.http.get('http://localhost:3000/assignments/' + id + '/setup', {
+    return this.http.get(`${environment.api}/assignments/${id}/setup`, {
       headers: {
         Authorization: this.userService.getToken()
       }
@@ -26,7 +27,7 @@ export class AssignmentService {
   }
 
   loadAssignment(id: string): any {
-    return this.http.get('http://localhost:3000/assignments/' + id, {
+    return this.http.get(`${environment.api}/assignments/${id}`, {
       headers: {
         Authorization: this.userService.getToken()
       }
@@ -34,7 +35,7 @@ export class AssignmentService {
   }
 
   loadUploads(id: string): any {
-    return this.http.get('http://localhost:3000/assignments/' + id + '/uploads', {
+    return this.http.get(`${environment.api}/assignments/${id}/uploads`, {
       headers: {
         Authorization: this.userService.getToken()
       }
@@ -42,7 +43,7 @@ export class AssignmentService {
   }
 
   upload(id: string, formData: FormData): any {
-    return this.http.post('http://localhost:3000/assignments/' + id + '/upload', formData, {
+    return this.http.post(`${environment.api}/assignments/${id}/upload`, formData, {
       headers: new HttpHeaders({
         Authorization: this.userService.getToken()
       })

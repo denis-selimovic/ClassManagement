@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 export interface Role {
   role: string;
@@ -25,11 +26,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): any {
-    return this.http.post('http://localhost:3000/users/auth/login', { username, password });
+    return this.http.post(`${environment.api}/users/auth/login`, { username, password });
   }
 
   register(username: string, password: string, name: string, surname: string, email: string): any {
-    return this.http.post('http://localhost:3000/users/auth/register', { username, password, name, surname, email });
+    return this.http.post(`${environment.api}/users/auth/register`, { username, password, name, surname, email });
   }
 
   setUser(userData, token): void {

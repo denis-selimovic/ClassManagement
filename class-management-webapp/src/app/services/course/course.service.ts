@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService, User } from '../user/user.service';
+import { environment } from '../../../environments/environment';
 
 export interface Rating {
   total: number;
@@ -44,15 +45,15 @@ export class CourseService {
   constructor(private http: HttpClient, private userService: UserService) { }
 
   loadCourses(): any {
-    return this.http.get('http://localhost:3000/courses');
+    return this.http.get(`${environment.api}/courses`);
   }
 
   loadCoursesByName(name: string): any {
-    return this.http.get('http://localhost:3000/courses?name=' + name);
+    return this.http.get(`${environment.api}/courses?name=${name}`);
   }
 
   loadMyCourses(): any {
-    return this.http.get('http://localhost:3000/users/my-courses', {
+    return this.http.get(`${environment.api}/users/my-courses`, {
       headers: {
         Authorization: this.userService.getToken()
       }
@@ -60,7 +61,7 @@ export class CourseService {
   }
 
   enroll(id: string): any {
-    return this.http.post('http://localhost:3000/courses/enroll/' + id, {}, {
+    return this.http.post(`${environment.api}/courses/enroll/${id}`, {}, {
       headers: {
         Authorization: this.userService.getToken()
       }
@@ -68,7 +69,7 @@ export class CourseService {
   }
 
   withdraw(id: string): any {
-    return this.http.post('http://localhost:3000/courses/leave/' + id, {}, {
+    return this.http.post(`${environment.api}/courses/leave/${id}`, {}, {
       headers: {
         Authorization: this.userService.getToken()
       }
