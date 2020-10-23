@@ -57,4 +57,12 @@ export class AssignmentService {
       })
     });
   }
+
+  uploadSetup(id: any, formData: FormData): any {
+    return this.http.post(`${environment.api}/assignments/${id}/setup`, formData, {
+      headers: new HttpHeaders({
+        Authorization: this.userService.getToken()
+      })
+    });
+  }
 }

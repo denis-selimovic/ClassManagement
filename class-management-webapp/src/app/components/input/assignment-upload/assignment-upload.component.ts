@@ -46,6 +46,8 @@ export class AssignmentUploadComponent implements OnInit {
         return this.assignmentService.upload(this.entity._id, formData).subscribe(results => {});
       case 1:
         return this.lessonService.upload(this.entity._id, formData).subscribe(results => {});
+      case 2:
+        return this.assignmentService.uploadSetup(this.entity._id, formData).subscribe(results => {});
       default:
         break;
     }
