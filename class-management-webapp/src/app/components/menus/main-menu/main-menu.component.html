@@ -9,4 +9,6 @@
   <a class="item link button" routerLink="my-assignments">My assignments</a>
   <a class="item link button" routerLink="courses">Courses</a>
   <div class="item link button" *ngIf="!isTutor()" (click)="tutor()">Become a tutor</div>
+  <div class="link item button" routerLink="create" *ngIf="isTutor()">Create course</div>
+  <div class="link item button" routerLink="created-courses" *ngIf="isTutor()">Created courses</div>
 </div>

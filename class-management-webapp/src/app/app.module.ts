@@ -29,6 +29,8 @@ import { CourseGridItemComponent } from './components/lists/course-grid-item/cou
 import { AssignmentService } from './services/assignment/assignment.service';
 import { AssignmentItemComponent } from './components/lists/assignment-item/assignment-item.component';
 import { AssignmentUploadComponent } from './components/input/assignment-upload/assignment-upload.component';
+import { CreateCourseComponent } from './components/input/create-course/create-course.component';
+import { CreatedCoursesComponent } from './components/lists/created-courses/created-courses.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -37,7 +39,9 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: UserDashboardComponent, children: [
       { path: 'my-courses', component: MyCoursesComponent },
       { path: 'my-assignments', component: MyAssignmentsComponent },
-      { path: 'courses', component: CoursesComponent }
+      { path: 'courses', component: CoursesComponent },
+      { path: 'create', component: CreateCourseComponent },
+      { path: 'created-courses', component: CreatedCoursesComponent }
     ]}
 ];
 
@@ -61,7 +65,9 @@ const appRoutes: Routes = [
     CoursesComponent,
     CourseGridItemComponent,
     AssignmentItemComponent,
-    AssignmentUploadComponent
+    AssignmentUploadComponent,
+    CreateCourseComponent,
+    CreatedCoursesComponent
   ],
   imports: [
     BrowserModule,
