@@ -16,7 +16,6 @@ export class LessonsComponent implements OnInit {
   @ViewChild('upload', { read: ViewContainerRef }) upload: ViewContainerRef;
 
   course: Course;
-  id: any;
 
   constructor(private router: Router, private userService: UserService,
               private factory: ComponentFactoryResolver) {
