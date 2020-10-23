@@ -55,4 +55,8 @@ export class UserService {
     }
     return 'Bearer ' + this.user.token;
   }
+
+  isTutor(): boolean {
+    return this.user.roles.map(r => r.role).includes('ROLE_TUTOR');
+  }
 }

@@ -17,4 +17,8 @@ export class MainMenuComponent implements OnInit {
     // return this.userService.getUser().username + ' ' + this.userService.getUser().surname;
     return 'Denis Selimović';
   }
+
+  isTutor(): boolean {
+    return this.userService.isTutor();
+  }
 }

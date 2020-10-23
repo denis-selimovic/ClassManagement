@@ -8,5 +8,5 @@
   <a class="item link button" routerLink="my-courses">My courses</a>
   <a class="item link button" routerLink="my-assignments">My assignments</a>
   <a class="item link button" routerLink="courses">Courses</a>
-  <a class="item link button" routerLink="tutor">Become a tutor</a>
+  <a class="item link button" routerLink="tutor" *ngIf="!isTutor()">Become a tutor</a>
 </div>
