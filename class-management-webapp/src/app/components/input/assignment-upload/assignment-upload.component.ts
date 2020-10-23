@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Assignment } from '../../../services/course/course.service';
 import { HttpClient } from '@angular/common/http';
-import { AssignmentService } from '../../../services/assignment/assignment.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +10,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AssignmentUploadComponent implements OnInit {
 
-  @Input() assignment: Assignment;
+  @Input() entity: any;
+  @Input() uploadCallback: any;
   @Output() hide = new EventEmitter<null>();
 
   uploadForm: FormGroup;
@@ -19,8 +19,7 @@ export class AssignmentUploadComponent implements OnInit {
   private type: string = undefined;
   filename: string = undefined;
 
-  constructor(private http: HttpClient, private assignmentService: AssignmentService,
-              private formBuilder: FormBuilder, private cd: ChangeDetectorRef) {
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private cd: ChangeDetectorRef) {
     this.uploadForm = this.formBuilder.group({
       file: [null, Validators.required]
     });
@@ -39,8 +38,7 @@ export class AssignmentUploadComponent implements OnInit {
     const formData = new FormData();
     const blob = new Blob([ this.uploadForm.get('file').value ], { type: this.type });
     formData.append('file', blob, this.filename);
-    this.assignmentService.upload(this.assignment._id, formData).subscribe(result => {
-    });
+    this.uploadCallback(this.entity._id, formData);
   }
 
   onFileChange($event: any): void {
@@ -67,6 +65,9 @@ export class AssignmentUploadComponent implements OnInit {
   }
 
   checkDueDate(): boolean {
-    return new Date(this.assignment.dueDate).getTime() < new Date().getTime();
+    if (!this.entity.dueDate) {
+      return true;
+    }
+    return new Date(this.entity.dueDate).getTime() < new Date().getTime();
   }
 }

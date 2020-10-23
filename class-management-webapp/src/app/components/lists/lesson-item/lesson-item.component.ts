@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbAccordion, NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
 import {UserService} from '../../../services/user/user.service';
@@ -14,6 +14,7 @@ export class LessonItemComponent implements OnInit {
   @Input() lesson: any;
   @Input() id: any;
   @Input() owner: any;
+  @Output() upload: EventEmitter<any> = new EventEmitter<any>();
   uploads = {};
 
   constructor(private userService: UserService, private lessonService: LessonService) { }
@@ -33,6 +34,7 @@ export class LessonItemComponent implements OnInit {
   }
 
   openUploadForm(): void {
+    this.upload.emit(this.lesson);
   }
 
   load($event: NgbPanelChangeEvent): void {

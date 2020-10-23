@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Router} from '@angular/router';
 import {Course} from '../../../services/course/course.service';
 import {UserService} from '../../../services/user/user.service';
-import {$e} from 'codelyzer/angular/styles/chars';
+import {AssignmentUploadComponent} from '../../input/assignment-upload/assignment-upload.component';
 
 @Component({
   selector: 'app-lessons',
@@ -11,10 +11,13 @@ import {$e} from 'codelyzer/angular/styles/chars';
 })
 export class LessonsComponent implements OnInit {
 
+  uploadRef: ComponentRef<AssignmentUploadComponent>;
+  @ViewChild('upload', { read: ViewContainerRef }) upload: ViewContainerRef;
+
   course: Course;
   id: any;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private factory: ComponentFactoryResolver) {
     this.course = this.router.getCurrentNavigation().extras.state.course;
   }
 
@@ -27,5 +30,27 @@ export class LessonsComponent implements OnInit {
 
   addLesson($event: any): void {
     this.course.lessons = [...this.course.lessons, $event];
+  }
+
+  uploadCallback(id, formData): void {
+
+  }
+
+  showUploadForm($event: any): void {
+    if (!this.uploadRef) {
+      const uploadComponent = this.factory.resolveComponentFactory(AssignmentUploadComponent);
+      this.uploadRef = this.upload.createComponent(uploadComponent);
+    }
+    this.uploadRef.instance.entity = $event;
+    this.uploadRef.instance.uploadCallback = this.uploadCallback;
+    this.uploadRef.instance.hide.subscribe(() => this.hideUploadForm());
+    this.uploadRef.changeDetectorRef.detectChanges();
+  }
+
+  hideUploadForm(): any {
+    if (this.uploadRef) {
+      this.uploadRef.destroy();
+      delete this.uploadRef;
+    }
   }
 }

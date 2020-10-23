@@ -1,10 +1,11 @@
 <div class="grid">
   <div class="lessons">
     <div class="lesson" *ngFor="let lesson of course.lessons">
-      <app-lesson-item [lesson]="lesson" [id]="course._id" [owner]="course.owner"></app-lesson-item>
+      <app-lesson-item [lesson]="lesson" [id]="course._id" [owner]="course.owner" (upload)="showUploadForm($event)"></app-lesson-item>
     </div>
   </div>
   <div class="forms" *ngIf="checkOwnership()">
     <app-create-lesson [id]="course._id" (created)="addLesson($event)"></app-create-lesson>
+    <ng-template #upload></ng-template>
   </div>
 </div>
