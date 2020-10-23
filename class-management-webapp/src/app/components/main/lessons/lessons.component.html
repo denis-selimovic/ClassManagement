@@ -1,7 +1,7 @@
 <div class="grid">
   <div class="lessons">
     <div class="lesson" *ngFor="let lesson of course.lessons">
-      <app-lesson-item [lesson]="lesson"></app-lesson-item>
+      <app-lesson-item [lesson]="lesson" [id]="course._id" [owner]="course.owner"></app-lesson-item>
     </div>
   </div>
   <div class="forms" *ngIf="checkOwnership()">

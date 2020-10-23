@@ -1,1 +1,19 @@
-<p>lesson-item works!</p>
+<div class="lesson">
+  <div class="name">{{lesson.name}}</div>
+  <div class="description">{{lesson.description}}</div>
+  <div class="accordion">
+    <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
+      <ngb-panel id="upload">
+        <ng-template ngbPanelHeader>
+          <a href (click)="toggle($event, a, 'upload')" class="upload-header">Uploads</a>
+          <button class="upload-btn" (click)="openUploadForm()" *ngIf="checkOwnership()">Upload</button>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div (click)="downloadUpload(upload.key)" class="download-link" *ngFor="let upload of uploads | keyvalue">
+            {{upload?.value?.name}}
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
