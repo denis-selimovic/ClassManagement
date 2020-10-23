@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbAccordion, NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import { saveAs } from 'file-saver';
 import {UserService} from '../../../services/user/user.service';
+import {LessonService} from '../../../services/lesson/lesson.service';
 
 @Component({
   selector: 'app-lesson-item',
@@ -15,7 +16,7 @@ export class LessonItemComponent implements OnInit {
   @Input() owner: any;
   uploads = {};
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private lessonService: LessonService) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +36,13 @@ export class LessonItemComponent implements OnInit {
   }
 
   load($event: NgbPanelChangeEvent): void {
+    const { nextState } = $event;
+    if (!nextState) {
+      return;
+    }
+    this.lessonService.loadUploads(this.lesson._id).subscribe(uploads => {
+      uploads.forEach(u => this.uploads[u._id] = u);
+    });
   }
 
   checkOwnership(): boolean {

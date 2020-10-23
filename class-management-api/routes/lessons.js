@@ -80,7 +80,20 @@ router.delete('/:id/upload', auth, checkRoles([ROLE_TUTOR]), async (req, res) =>
         await upload.remove();
         res.status(201).json({ message: 'File successfully deleted' });
     } catch (e) {
-        res.send(400).json({ message: 'Unable to delete file' });
+        res.status(400).json({ message: 'Unable to delete file' });
+    }
+});
+
+router.get('/:id/uploads', auth, async (req, res) => {
+    try {
+        const lesson = await Lesson.getLessonById(req.params.id);
+        const formattedUploads = lesson.uploads.map(upload => {
+            const { _id, name, mimetype, owner, uploadedBy } = upload;
+            return { _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') };
+        });
+        res.status(200).json(formattedUploads);
+    } catch (e) {
+        res.status(400).json({ message: 'Could not fetch items' })
     }
 });
 
