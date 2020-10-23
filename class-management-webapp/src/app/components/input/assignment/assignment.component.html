@@ -1,1 +1,19 @@
-<p>assignment works!</p>
+<div>
+  <form [formGroup]="form" class="form" (ngSubmit)="createAssignment()">
+    <div class="input-field">
+      <input formControlName="name" name="name" placeholder="Lesson name" class="input"/>
+      <div class="error" *ngIf="form.get('name').touched && form.get('name').invalid">
+        Name is required
+      </div>
+    </div>
+    <div class="input-field">
+      <ngb-datepicker formControlName="date" ></ngb-datepicker>
+    </div>
+    <div class="input-field">
+
+    </div>
+    <div class="input-field">
+      <input class="submit" value="Create assignment" type="submit" [disabled]="form.invalid"/>
+    </div>
+  </form>
+</div>
