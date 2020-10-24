@@ -8,11 +8,11 @@
     <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
       <ngb-panel id="upload">
         <ng-template ngbPanelHeader>
-          <a href (click)="toggle($event, a, 'upload')" class="upload-header">My uploads</a>
-          <button class="upload-btn" (click)="openUploadForm()">Upload</button>
+          <a href (click)="toggle($event, a, 'upload')" class="upload-header">Setup</a>
+          <button class="upload-btn" (click)="openUploadForm()" *ngIf="checkOwnership()">Upload</button>
         </ng-template>
         <ng-template ngbPanelContent>
-          <div (click)="downloadUpload(upload.key)" class="download-link">
+          <div (click)="downloadUpload()" class="download-link">
             {{upload?.name}}
           </div>
         </ng-template>

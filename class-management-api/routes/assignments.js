@@ -87,6 +87,7 @@ router.post('/:id/upload', auth, upload.single('file'), async (req, res) => {
 router.get('/:id/setup', auth, async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
+        if (!assignment.setup) return res.status(200).json({});
         const { _id, name, mimetype, owner, uploadedBy } = assignment.setup;
         res.status(200).json({ _id, name, mimetype, owner, uploadedBy, data: assignment.setup.data.toString('utf-8') });
     } catch (e) {
