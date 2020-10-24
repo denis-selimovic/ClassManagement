@@ -41,6 +41,7 @@ import { CreateLessonComponent } from './components/input/create-lesson/create-l
 import {LessonService} from './services/lesson/lesson.service';
 import { AssignmentComponent } from './components/input/assignment/assignment.component';
 import { AssignmentListItemComponent } from './components/lists/assignment-list-item/assignment-list-item.component';
+import { StudentItemComponent } from './components/lists/student-item/student-item.component';
 
 const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
@@ -91,7 +92,8 @@ const appRoutes: Routes = [
     LessonItemComponent,
     CreateLessonComponent,
     AssignmentComponent,
-    AssignmentListItemComponent
+    AssignmentListItemComponent,
+    StudentItemComponent
   ],
   imports: [
     BrowserModule,

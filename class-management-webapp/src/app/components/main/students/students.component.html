@@ -1,1 +1,3 @@
-<p>students works!</p>
+<div class="grid">
+  <app-student-item *ngFor="let student of course?.students" [student]="student" [course]="course"></app-student-item>
+</div>
