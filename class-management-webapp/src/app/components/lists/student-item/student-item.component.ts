@@ -33,9 +33,8 @@ export class StudentItemComponent implements OnInit {
       return;
     }
     this.assignmentService.loadStudentUploads(panelId, this.student._id).subscribe(u => {
-      if (!this.uploads[u._id]) {
-        this.uploads[u._id] = u;
-      }
+      this.uploads = {};
+      u.forEach(up => this.uploads[up._id] = up);
     });
   }
 
