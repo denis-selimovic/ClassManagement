@@ -29,6 +29,7 @@ PORT=
 ```
 * We change the port to 8080 because the web application runs on port 3000 which would also be the default port here
 * Run __npm start__
+* Run app in production mode with __NODE_ENV=production npm start__ (uses cloud database instead of localhost)
 * Experiment with the API!
 
 ### Web Application
