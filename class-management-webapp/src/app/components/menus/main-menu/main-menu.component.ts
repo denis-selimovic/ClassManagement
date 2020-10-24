@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../../services/user/user.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
@@ -8,9 +9,10 @@ import {UserService} from '../../../services/user/user.service';
 })
 export class MainMenuComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.navigate(['my-courses'], { relativeTo: this.route });
   }
 
   getUsername(): string {
