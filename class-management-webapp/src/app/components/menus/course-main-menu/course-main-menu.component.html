@@ -8,5 +8,5 @@
   </div>
   <div class="item link button" (click)="navigate('lessons')">Lessons</div>
   <div class="item link button" (click)="navigate('assignments')">Assignments</div>
-  <div class="item link button" (click)="navigate('students')">Students</div>
+  <div class="item link button" (click)="navigate('students')" *ngIf="checkOwnership()">Students</div>
 </div>

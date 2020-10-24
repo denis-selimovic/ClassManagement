@@ -32,4 +32,8 @@ export class CourseMainMenuComponent implements OnInit {
   navigate(link: string): any {
     this.router.navigate([link], { relativeTo: this.route, state: { course: this.course } });
   }
+
+  checkOwnership(): boolean {
+    return this.course.owner === this.userService.getUser()._id;
+  }
 }
