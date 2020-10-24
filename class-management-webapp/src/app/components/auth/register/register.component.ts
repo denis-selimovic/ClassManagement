@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.get('surname').value,
       this.registerForm.get('email').value).subscribe(data => {
         this.registered = true;
-        setTimeout(() => this.router.navigate(['']), 2000);
+        setTimeout(() => this.router.navigate(['login']), 2000);
     }, err => {
       this.failedRegistration = true;
     });
