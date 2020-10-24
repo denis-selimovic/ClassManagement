@@ -49,4 +49,14 @@ export class CourseGridItemComponent implements OnInit {
   getRoute(): string {
     return `/courses/${this.course._id}`;
   }
+
+  getEnrollment(): string {
+    const num = this.course?.students?.length;
+    return (num === 1) ? `${num} student enrolled` : `${num} students enrolled`;
+  }
+
+  getAssignments(): string {
+    const num = this.course?.assignments?.length;
+    return (num === 1) ? `${num} assignment` : `${num} assignments`;
+  }
 }

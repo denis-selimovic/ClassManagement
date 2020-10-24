@@ -2,8 +2,8 @@
   <div class="course-name" [routerLink]="getRoute()" >{{course.name}}</div>
   <div class="course-desc">{{course.description}}</div>
   <div class="course-info">
-    <div class="course-students">x students enrolled</div>
-    <div class="course-assignments">x assignments</div>
+    <div class="course-students">{{getEnrollment()}}/div>
+    <div class="course-assignments">{{getAssignments()}}</div>
   </div>
   <div class="course-rating">
     <ngb-rating [rate]="getRating()" max="5" [readonly]="!button"></ngb-rating>
