@@ -1,0 +1,22 @@
+<div class="assignment">
+  <div class="name">{{assignment.name}}</div>
+  <div class="info">
+    <div class="course">Course: {{name}}</div>
+    <div class="date">Due to: {{assignment.dueDate | date: "dd.MM.yyyy"}}</div>
+  </div>
+  <div class="accordion">
+    <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
+      <ngb-panel id="upload">
+        <ng-template ngbPanelHeader>
+          <a href (click)="toggle($event, a, 'upload')" class="upload-header">My uploads</a>
+          <button class="upload-btn" (click)="openUploadForm()">Upload</button>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div (click)="downloadUpload(upload.key)" class="download-link">
+            {{upload?.name}}
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="grid">
   <div class="assignments">
     <div class="assignment" *ngFor="let assignment of assignments">
-
+      <app-assignment-list-item [assignment]="assignment" [name]="course.name"></app-assignment-list-item>
     </div>
   </div>
   <div class="forms" *ngIf="checkOwnership()">
