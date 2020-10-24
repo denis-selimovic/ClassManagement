@@ -25,6 +25,6 @@ export class CreateCourseComponent implements OnInit {
   createCourse(): void {
     this.courseService.create(this.courseForm.get('name').value, this.courseForm.get('description').value).subscribe(data => {
       this.courseForm.reset();
-    }).error(error => this.failedCreation = true);
+    }, error => this.failedCreation = true);
   }
 }
