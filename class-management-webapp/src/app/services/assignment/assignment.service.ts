@@ -50,6 +50,14 @@ export class AssignmentService {
     });
   }
 
+  loadStudentUploads(id: string, sid: string): any {
+    return this.http.get(`${environment.api}/assignments/${id}/uploads/${sid}`, {
+      headers: {
+        Authorization: this.userService.getToken()
+      }
+    });
+  }
+
   upload(id: string, formData: FormData): any {
     return this.http.post(`${environment.api}/assignments/${id}/upload`, formData, {
       headers: new HttpHeaders({

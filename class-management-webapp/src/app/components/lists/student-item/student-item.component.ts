@@ -31,6 +31,11 @@ export class StudentItemComponent implements OnInit {
     if (!nextState) {
       return;
     }
+    this.assignmentService.loadStudentUploads(panelId, this.student._id).subscribe(u => {
+      if (!this.uploads[u._id]) {
+        this.uploads[u._id] = u;
+      }
+    });
   }
 
   toggle($event: MouseEvent, a: NgbAccordion, id: any): void {
@@ -39,6 +44,8 @@ export class StudentItemComponent implements OnInit {
   }
 
   downloadUpload(key: string): void {
-
+    const upload = this.uploads[key];
+    const blob = new Blob([upload.data], { type: upload.mimetype });
+    saveAs(blob, upload.name);
   }
 }
