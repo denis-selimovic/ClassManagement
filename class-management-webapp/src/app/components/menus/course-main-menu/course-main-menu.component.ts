@@ -19,6 +19,7 @@ export class CourseMainMenuComponent implements OnInit {
     this.userService.loadById(this.course.owner).subscribe(data => {
       this.tutor = data.tutor;
     });
+    this.router.navigate(['lessons'], { relativeTo: this.route, state: { course: this.course } });
   }
 
   getRating(): number {
