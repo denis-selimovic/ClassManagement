@@ -5,6 +5,6 @@
   </div>
   <div class="rating">
     <ngb-rating [rate]="getRate()" max="5" [readonly]="isReadOnly()"></ngb-rating>
-    <p class="enrolled">x students enrolled</p>
+    <p class="enrolled">{{getEnroolment()}}</p>
   </div>
 </div>

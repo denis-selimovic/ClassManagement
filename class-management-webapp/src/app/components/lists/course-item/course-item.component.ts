@@ -25,4 +25,9 @@ export class CourseItemComponent implements OnInit {
   isReadOnly(): boolean {
     return this.userService.getUser() === null || this.userService.getUser() === undefined;
   }
+
+  getEnroolment(): string {
+    const num = this.course?.students?.length;
+    return (num === 1)  ? `${num} student enrolled` : `${num} students enrolled`;
+  }
 }
