@@ -3,6 +3,13 @@
 ## What is it?
 This is a full-stack application for class management. Tutors can create lessons and assignments inside their courses. Anyone who is enrolled can access to full course content. All lessons can be downloaded. Students can upload their assignments to the server, which can then be accessed by tutors. Supports all file formats for upload. Need registration to access courses and materials. Guest can only search courses and do not have any other access rights.
 
+## Stack
+* The web application is made using __Angular__.  
+* REST API is developed using __NodeJS__. 
+* Server uses __MongoDB__ database.
+* Web application and server are deployed to __Heroku Platform__.
+* Backend connects to the __MongoDB Atlas__ cloud database.
+
 ## Check out the application
 * Web application is available [here](https://class-management-webapp.herokuapp.com).
 * The API can be accessed via [this link](https://classm-api.herokuapp.com)
