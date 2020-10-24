@@ -8,9 +8,9 @@
     </div>
     <div class="input-field">
       <ngb-datepicker formControlName="date" ></ngb-datepicker>
-    </div>
-    <div class="input-field">
-
+      <div class="error" *ngIf="form.get('date').touched && form.get('date').invalid">
+        Date is required
+      </div>
     </div>
     <div class="input-field">
       <input class="submit" value="Create assignment" type="submit" [disabled]="form.invalid"/>
