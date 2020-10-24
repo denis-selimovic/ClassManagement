@@ -1,1 +1,18 @@
-<p>student-item works!</p>
+<div class="card">
+  <div class="name">{{getName()}}</div>
+  <div class="email">{{student.email}}</div>
+  <div class="accordion">
+    <ngb-accordion #a="ngbAccordion" (panelChange)="load($event)">
+      <ngb-panel *ngFor="let assignment of course.assignments" [id]="assignment._id">
+        <ng-template ngbPanelHeader>
+          <a href class="upload-header" (click)="toggle($event, a, assignment._id)">{{assignment.name}}</a>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div (click)="downloadUpload(upload.key)" class="download-link" *ngFor="let upload of uploads | keyvalue">
+            {{upload?.value?.name}}
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>

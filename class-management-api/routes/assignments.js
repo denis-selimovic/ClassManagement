@@ -109,4 +109,18 @@ router.get('/:id/uploads', auth, async (req, res) => {
     }
 });
 
+router.get('/:id/uploads:/sid', auth, async (req, res) => {
+    try {
+        const assignment = await Assignment.getAssignmentById(req.params.id);
+        const uploads = assignment.uploads.filter(upload => upload.uploadedBy.toString() === req.params.sid);
+        const formattedUploads = uploads.map(upload => {
+            const { _id, name, mimetype, owner, uploadedBy } = upload;
+            return { _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') };
+        });
+        res.status(200).json(formattedUploads);
+    } catch (e) {
+        res.status(400).json({ message: 'Resource not found' });
+    }
+});
+
 module.exports = router;
