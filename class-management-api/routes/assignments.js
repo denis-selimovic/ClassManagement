@@ -99,6 +99,9 @@ router.get('/:id/uploads', auth, async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
         const uploads = assignment.uploads.filter(upload => upload.uploadedBy.toString() === req.user._id.toString());
+        if (uploads.length === 0) {
+            return res.status(200).json([]);
+        }
         const formattedUploads = uploads.map(upload => {
             const { _id, name, mimetype, owner, uploadedBy } = upload;
             return { _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') };
@@ -109,10 +112,13 @@ router.get('/:id/uploads', auth, async (req, res) => {
     }
 });
 
-router.get('/:id/uploads:/sid', auth, async (req, res) => {
+router.get('/:id/uploads/:sid', auth, async (req, res) => {
     try {
         const assignment = await Assignment.getAssignmentById(req.params.id);
         const uploads = assignment.uploads.filter(upload => upload.uploadedBy.toString() === req.params.sid);
+        if (uploads.length === 0) {
+            return res.status(200).json([]);
+        }
         const formattedUploads = uploads.map(upload => {
             const { _id, name, mimetype, owner, uploadedBy } = upload;
             return { _id, name, mimetype, owner, uploadedBy, data: upload.data.toString('utf-8') };

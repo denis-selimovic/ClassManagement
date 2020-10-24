@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbAccordion, NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import {UserService} from '../../../services/user/user.service';
 import { saveAs } from 'file-saver';
+import {AssignmentService} from '../../../services/assignment/assignment.service';
 
 @Component({
   selector: 'app-student-item',
@@ -15,7 +16,7 @@ export class StudentItemComponent implements OnInit {
 
   uploads = {};
 
-  constructor(private assignmentService, private userService: UserService) { }
+  constructor(private assignmentService: AssignmentService, private userService: UserService) { }
 
   ngOnInit(): void {
     console.log(this.student);
@@ -40,7 +41,13 @@ export class StudentItemComponent implements OnInit {
 
   toggle($event: MouseEvent, a: NgbAccordion, id: any): void {
     $event.preventDefault();
-    (a.isExpanded(id)) ? a.collapse(id) : a.expand(id);
+    if (a.isExpanded(id)) {
+      a.collapse(id);
+    }
+    else {
+      a.collapseAll();
+      a.expand(id);
+    }
   }
 
   downloadUpload(key: string): void {
