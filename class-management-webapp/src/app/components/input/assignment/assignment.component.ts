@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {AssignmentService} from '../../../services/assignment/assignment.service';
 
 @Component({
   selector: 'app-assignment',
@@ -13,7 +14,7 @@ export class AssignmentComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private forumBuilder: FormBuilder) {
+  constructor(private forumBuilder: FormBuilder, private assignmentService: AssignmentService) {
     this.form = this.forumBuilder.group({
       name: ['', Validators.required],
       date: ['', Validators.required]
@@ -24,6 +25,10 @@ export class AssignmentComponent implements OnInit {
   }
 
   createAssignment(): void {
-    console.log(this.form.get('date'));
+    const formDate = this.form.get('date').value;
+    const dueDate = new Date(formDate.year, formDate.month - 1, formDate.day, 23, 59, 59);
+    const extensions = 'pdf,zip,rar,doc,docx';
+    const assignment = { name: this.form.get('name').value, dueDate, extensions };
+    this.assignmentService.create(this.id, assignment).subscribe(a => this.create.emit(a), error => {});
   }
 }

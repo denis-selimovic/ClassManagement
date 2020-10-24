@@ -65,4 +65,12 @@ export class AssignmentService {
       })
     });
   }
+
+  create(id: string, assignment: any): any {
+    return this.http.post(`${environment.api}/courses/${id}/assignment`, assignment, {
+      headers: new HttpHeaders({
+        Authorization: this.userService.getToken()
+      })
+    });
+  }
 }
