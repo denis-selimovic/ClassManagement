@@ -11,7 +11,7 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.userService.getUser()) {
-      this.router.navigate([''], {
+      this.router.navigate(['login'], {
         queryParams: {
           return: state.url
         }

@@ -47,14 +47,14 @@ const appRoutes: Routes = [
   { path: '', component: GuestDashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: UserDashboardComponent, children: [
+  { path: 'dashboard', component: UserDashboardComponent, canActivate: [AuthGuardService], children: [
       { path: 'my-courses', component: MyCoursesComponent },
       { path: 'my-assignments', component: MyAssignmentsComponent },
       { path: 'courses', component: CoursesComponent },
       { path: 'create', component: CreateCourseComponent },
       { path: 'created-courses', component: CreatedCoursesComponent }
     ]},
-  { path: 'courses/:id', component: CourseDashboardComponent, children: [
+  { path: 'courses/:id', component: CourseDashboardComponent, canActivate: [AuthGuardService], children: [
       { path: 'lessons', component: LessonsComponent },
       { path: 'students', component: StudentsComponent },
       { path: 'assignments', component: AssignmentsComponent }
